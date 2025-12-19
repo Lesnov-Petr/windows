@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { btnMixin, color, fontMixin } from "../../assets/globalStyles";
+import { color, fontMixin } from "../../assets/globalStyles";
 import { NavLink } from "react-router-dom";
 
 export const SNavigation = styled.div.attrs({ className: "navigation" })`
@@ -14,10 +14,11 @@ export const SList = styled.ul.attrs({ className: "header__list" })`
 
 export const SLink = styled(NavLink).attrs({ className: "header__link" })`
   ${fontMixin.standart}
+  font-size: 20px;
   height: auto;
   padding: 10px 15px;
   border-radius: 4px;
-  transition: background-color 0.2s ease;
+  transition: all 0.3s ease;
 
   &.active {
     padding-bottom: 5px;
@@ -29,7 +30,7 @@ export const SLink = styled(NavLink).attrs({ className: "header__link" })`
 
   &:hover {
     background-color: ${color.accent};
-    color: white;
+    color: ${color.textAccent};
   }
 
   &:last-child {

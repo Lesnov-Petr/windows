@@ -1,12 +1,19 @@
 import { createGlobalStyle, css } from "styled-components";
 
 export const cubic = "cubic-bezier(0.4, 0, 0.2, 1);";
-export const ms = "550ms";
+export const ms = "300ms";
 
 //======================== Цвета ========================================
 export const color = {
   text: "#413b32",
-  accent: "#ccddc4",
+  textAccent: "#5c7560",
+  textDarkGreen: "#085237",
+  accent: "#e1eedc",
+  accent_2: "#1ad3d3",
+  accentOrange: "#ff6b35",
+  accentCoral: "#E63946",
+  hoverAccent: "#a8c79a",
+  mark: "#7f8c8d",
   logo: "#073826",
   bg: "#faf9f1",
   disable: "#faf8ea",
@@ -56,48 +63,22 @@ export const fontMixin = {
   subTitle: css`
     font-family: ${fontsFamaly.standart};
     font-size: ${sizeFonts.desktop.title};
-    font-weight: ${700};
-    line-height: auto;
-    letter-spacing: ${"6px"};
+    font-weight: ${400};
+    letter-spacing: ${"2px"};
   `,
 };
-
-// export const btnMixin = {
-//   accent: css`
-//     ${fontMixin.standart}
-//     color: ${color.text};
-//     background-color: ${color.accent};
-//     padding: 13px 0;
-//     border: 2px solid transparent;
-//     box-shadow: 0px 4px 10px rgba(45, 128, 252, 0.5);
-//     border-radius: 8px;
-//     transition: ${ms} ${cubic};
-//     outline: none;
-
-//     &:disabled {
-//       background-color: ${color.disable};
-//       box-shadow: 0px 4px 10px rgba(102, 102, 102, 0.5);
-//     }
-
-//     &:hover:not([disabled]) {
-//       background-color: ${color.accent};
-//       color: ${color.text};
-//       border: 2px solid ${color.text};
-//     }
-//   `,
-// };
 
 export const btnMixin = {
   accent: css`
     ${fontMixin.standart}
     color: ${color.text};
     background-color: ${color.accent};
-    padding: 13px 0;
+    padding: 15px 15px;
     border: 2px solid transparent;
-    box-shadow: 0px 4px 10px rgba(45, 128, 252, 0.5);
+    box-shadow: 0px 4px 10px ${color.accent};
     border-radius: 8px;
     transition: all ${ms} ${cubic};
-    /* outline: none; */
+    outline: 1px solid #1ad3d3;
     position: relative;
     overflow: hidden;
 
@@ -149,12 +130,26 @@ export const inputMixin = {
     border-radius: 8px;
     border: 1px solid rgba(33, 33, 33, 0.2);
     background-color: #fff;
+    vertical-align: top;
     transition: outline-color ${ms} ${cubic};
+
+    /* Для многострочного текста */
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 
     box-shadow: 1px 1px 0px 0px rgba(34, 60, 80, 0.2);
 
     &:focus {
       outline: 2px solid ${color.accent};
+    }
+
+    &:hover {
+      background-color: ${color.accent};
+    }
+
+    &:last-child {
+      margin-bottom: 0;
     }
   `,
 };
@@ -218,6 +213,7 @@ export const GlobalStyle = createGlobalStyle`
 		padding: 0;
 		list-style: none;
 	}
+
 
 	body,
 	h1,
@@ -283,4 +279,6 @@ export const GlobalStyle = createGlobalStyle`
 	.g-recaptcha {
 		margin-top: 1vh;
 	}
+
+  
 `;

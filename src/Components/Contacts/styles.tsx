@@ -9,10 +9,12 @@ export const SContacts = styled.div.attrs({ className: "contacts" })`
 
 export const SBox = styled.p.attrs({ className: "contacts__box" })`
   display: flex;
+  width: 100%;
 `;
 
 export const STitle = styled.p.attrs({ className: "contacts__title" })`
   ${fontMixin.standart};
+  font-size: 18px;
   display: inherit;
   align-items: center;
 `;
@@ -43,5 +45,5 @@ export const SPhone = styled.p.attrs({ className: "contacts__phone" })`
 
 export const SWorkTime = styled.p.attrs({ className: "contacts__qorkTime" })`
   ${fontMixin.standart};
-  color: ${color.text};
+  color: ${color.accent_2};
 `;

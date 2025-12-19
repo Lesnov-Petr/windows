@@ -1,7 +1,6 @@
 import { lazy } from "react";
 
 const Main = lazy(() => import("./pages/Main"));
-const Auth = lazy(() => import("./pages/Auth"));
 const SignUp = lazy(() => import("./pages/SignUp"));
 
 interface Route {
@@ -24,14 +23,7 @@ export const routes: Route[] = [
     isProtected: false,
     redirectTo: "/",
   },
-  {
-    id: "login",
-    label: "login",
-    path: "/login",
-    component: Auth,
-    isProtected: false,
-    redirectTo: "/",
-  },
+
   {
     id: "signUp",
     label: "signUp",

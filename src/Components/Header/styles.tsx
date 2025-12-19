@@ -1,5 +1,6 @@
 import { styled } from "styled-components";
 import { device } from "../../assets/globalStyles";
+import { SToolHint } from "../ToolHint/styles";
 
 export const SHeader = styled.div.attrs({ className: "header" })`
   display: flex;
@@ -16,4 +17,20 @@ export const SHeader = styled.div.attrs({ className: "header" })`
   @media ${device.desktop} {
     width: 20%;
   } */
+`;
+
+export const SAuth = styled.div.attrs({ className: "auth" })`
+  position: relative;
+  display: flex;
+  cursor: pointer;
+
+  &:hover ${SToolHint} {
+    opacity: 1;
+    visibility: visible;
+  }
+`;
+
+export const SAuthIcon = styled.img.attrs({ className: "auth__icon" })`
+  width: 30px;
+  height: 30px;
 `;

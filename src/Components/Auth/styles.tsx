@@ -9,7 +9,7 @@ export const SAuth = styled.div.attrs({ className: "auth" })`
 
 export const SForm = styled.form.attrs({ className: "auth__form" })`
   width: 100%;
-  max-width: 400px;
+  /* max-width: 400px; */
   padding: 20px;
   text-align: right;
   border: 2px solid ${color.text};
@@ -20,9 +20,9 @@ export const SForm = styled.form.attrs({ className: "auth__form" })`
     width: 60%;
   }
 
-  @media ${device.desktop} {
+  /* @media ${device.desktop} {
     width: 30%;
-  }
+  } */
 `;
 
 export const STitle = styled.h2.attrs({ className: "auth__title" })`

@@ -11,21 +11,23 @@ import {
 import { ReactComponent as Telegram } from "../../assets/images/telegram.svg";
 import { ReactComponent as Whatsapp } from "../../assets/images/whatsapp.svg";
 import { ReactComponent as VK } from "../../assets/images/vk.svg";
+import { ReactComponent as Phone } from "../../assets/images/phone.svg";
 
 export const Contacts: React.FC = () => {
   const socials = [
-    {
-      id: "telegram",
-      Icon: Telegram,
-      appUrl: "tg://resolve?domain=LesnovPetr",
-      webUrl: "https://t.me/CheatorOfStar",
-    },
     {
       id: "whatsapp",
       Icon: Whatsapp,
       appUrl: "whatsapp://send?phone=79684888586",
       webUrl: "https://web.whatsapp.com/send?phone=79684888586",
     },
+    {
+      id: "telegram",
+      Icon: Telegram,
+      appUrl: "tg://resolve?domain=LesnovPetr",
+      webUrl: "https://t.me/CheatorOfStar",
+    },
+
     {
       id: "vk",
       Icon: VK,
@@ -57,8 +59,12 @@ export const Contacts: React.FC = () => {
           ))}
         </SList>
       </SBox>
-
-      <SPhone>8 968 488 85 86</SPhone>
+      <SBox>
+        <SLink>
+          <Phone />
+        </SLink>
+        <SPhone>8 968 488 85 86</SPhone>
+      </SBox>
       <SWorkTime>Ежедневно с 09:00 до 21:00</SWorkTime>
     </SContacts>
   );

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { fontMixin } from "../../assets/globalStyles";
+import { color, fontMixin } from "../../assets/globalStyles";
 
 export const SDescription = styled.div.attrs({ className: "description" })`
   display: flex;
@@ -14,6 +14,7 @@ export const STitle = styled.h2.attrs({ className: "description__title" })`
   ${fontMixin.title}
   font-size: 40px;
   margin-bottom: 20px;
+  text-align: center;
 `;
 
 export const SList = styled.ul.attrs({ className: "description__list" })`
@@ -25,9 +26,12 @@ export const SLink = styled.a.attrs({ className: "description__link" })`
   position: relative;
   display: block;
   overflow: hidden;
+  width: calc(100% / 3);
+  border: 1px solid ${color.accent_2};
+  border-radius: 8px;
 
   img {
-    width: 100%;
+    max-width: 100%;
     height: auto;
     display: block;
     transition: transform 0.3s ease;
@@ -51,7 +55,7 @@ export const SLink = styled.a.attrs({ className: "description__link" })`
       width: 40px;
       height: 40px;
       margin-right: 20px;
-      /* filter: brightness(0) invert(1); Делает иконку белой */
+      filter: brightness(2) invert(1);
     }
 
     .span {
@@ -73,7 +77,7 @@ export const SOverlay = styled.div.attrs({ className: "description__overlay" })`
   height: 100%;
   background: linear-gradient(
     to top,
-    rgba(253, 248, 241, 0.9) 20%,
+    rgba(253, 248, 241, 0.7) 20%,
     transparent 50%
   );
   z-index: 2;

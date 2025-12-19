@@ -8,9 +8,8 @@ import {
 import { useAppDispatch } from "../../hooks";
 import { signIn } from "../../redux/auth/auth-operations";
 import { Input } from "../../Components/Input";
-import { SAuth, SForm, SLink, SLinkRegistration, STitle } from "./styles";
+import { SAuth, SForm, STitle } from "./styles";
 import { Button } from "../../Components/Button";
-import { LogoFirst } from "../../Components/Logo";
 import { CredentialsType } from "../../types/credentials";
 import { useSelector } from "react-redux";
 import { authSelectorError } from "../../redux/auth/auth-selectors";
@@ -54,17 +53,17 @@ const Auth: React.FC = () => {
 
   return (
     <SAuth>
-      <LogoFirst />
-      <STitle>Авторизация в Work-Spaces</STitle>
+      {/* <LogoFirst /> */}
+      <STitle>Авторизация в личный кабинет</STitle>
       <SForm onSubmit={handleSubmit}>
         <Input
           name="identifier"
           value={formData.identifier}
           onChange={handleChange}
-          placeholder="Email / Телефон"
+          placeholder="Телефон"
           style={{ width: "100%" }}
         />
-        <SLink href="/password_reset">Забыли пароль?</SLink>
+        {/* <SLink href="/password_reset">Забыли пароль?</SLink> */}
         <Input
           type="password"
           name="password"
@@ -78,9 +77,6 @@ const Auth: React.FC = () => {
           Авторизоваться
         </Button>
       </SForm>
-      <SLinkRegistration href="/signUp">
-        Регистрация Work-Spaces
-      </SLinkRegistration>
     </SAuth>
   );
 };

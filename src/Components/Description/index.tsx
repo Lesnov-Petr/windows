@@ -3,26 +3,38 @@ import window from "../../assets/images/window.svg";
 import balckony from "../../assets/images/balcony.svg";
 import door from "../../assets/images/door.svg";
 import { Container } from "../Container";
+import ImgWindow from "../../assets/images/imgWindow.png";
+import ImgBalcony from "../../assets/images/imgBalcony.png";
+import ImgDoors from "../../assets/images/imgDoors.png";
+import { useState } from "react";
+import Modal from "../Modal";
+import FormContact from "../Form";
 
 export const Description: React.FC = () => {
+  const [isOpenModal, setIsOpenModal] = useState(false);
+
+  const handleClick = () => {
+    setIsOpenModal(!isOpenModal);
+  };
+
   const listDescription = [
     {
       href: "/пластиковые-окна",
-      img: "https://www.ecookna.ru/local/templates/v2021/images/main/window.jpg",
+      img: ImgWindow,
       alt: "Окна",
       icon: window,
       price: 7567,
     },
     {
       href: "/балкон-лоджия",
-      img: "https://www.ecookna.ru/local/templates/v2021/images/main/balcony.jpg",
+      img: ImgBalcony,
       alt: "Балконы",
       icon: balckony,
       price: 10670,
     },
     {
       href: "/двери",
-      img: "https://www.ecookna.ru/local/templates/v2021/images/main/door.jpg",
+      img: ImgDoors,
       alt: "Двери",
       icon: door,
       price: 15313,
@@ -32,10 +44,12 @@ export const Description: React.FC = () => {
   return (
     <SDescription>
       <Container>
-        <STitle>ПЛАСТИКОВЫЕ ОКНА И ДВЕРИ НА ЗАКАЗ</STitle>
+        <STitle>
+          ЦЕНЫ ПЛАСТИКОВЫХ ОКОН И ДВЕРЕЙ НА ЗАКАЗ СТАНДАРТНЫХ РАЗМЕРОВ
+        </STitle>
         <SList>
           {listDescription.map((item) => (
-            <SLink href={item.href}>
+            <SLink onClick={handleClick}>
               <img src={item.img} alt={item.alt} />
               <SOverlay />
               <div className="wrapper">
@@ -49,6 +63,13 @@ export const Description: React.FC = () => {
           ))}
         </SList>
       </Container>
+      <Modal
+        isOpen={isOpenModal}
+        onClose={() => setIsOpenModal(false)}
+        title={"Заказать замер"}
+      >
+        <FormContact onClick={handleClick} />
+      </Modal>
     </SDescription>
   );
 };
