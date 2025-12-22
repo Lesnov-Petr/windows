@@ -29,12 +29,14 @@ const sizeFonts = {
   mobile: { standart: "12px" },
   desktop: {
     standart: "14px",
-    title: "22px",
+    title: "40px",
+    subTitle: "22px",
     logo: "64px",
   },
   table: {
     standart: "14px",
-    title: "22px",
+    title: "30px",
+    subTitle: "18px",
     logo: "48px",
   },
 };
@@ -62,7 +64,7 @@ export const fontMixin = {
   `,
   subTitle: css`
     font-family: ${fontsFamaly.standart};
-    font-size: ${sizeFonts.desktop.title};
+    font-size: ${sizeFonts.desktop.subTitle};
     font-weight: ${400};
     letter-spacing: ${"2px"};
   `,

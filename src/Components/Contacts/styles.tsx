@@ -40,6 +40,7 @@ export const SLink = styled.a.attrs({ className: "social__link" })`
 
 export const SPhone = styled.p.attrs({ className: "contacts__phone" })`
   ${fontMixin.title};
+  font-size: 22px;
   color: ${color.text};
 `;
 

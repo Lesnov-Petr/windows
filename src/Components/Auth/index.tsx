@@ -15,6 +15,7 @@ import { useSelector } from "react-redux";
 import { authSelectorError } from "../../redux/auth/auth-selectors";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { LogoFirst } from "../Logo";
 
 const Auth: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -53,7 +54,7 @@ const Auth: React.FC = () => {
 
   return (
     <SAuth>
-      {/* <LogoFirst /> */}
+      <LogoFirst />
       <STitle>Авторизация в личный кабинет</STitle>
       <SForm onSubmit={handleSubmit}>
         <Input

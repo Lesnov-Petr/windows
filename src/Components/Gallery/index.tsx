@@ -1,4 +1,4 @@
-import { SGallery, SImage } from "./styles";
+import { SGallery, SImage, STitle } from "./styles";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -38,6 +38,7 @@ export const Gallery: React.FC = () => {
   ];
   return (
     <SGallery>
+      <STitle>Наши проекты</STitle>
       <Swiper
         modules={[Navigation, Pagination, Autoplay]}
         spaceBetween={10}

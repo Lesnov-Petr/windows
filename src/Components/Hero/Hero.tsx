@@ -34,7 +34,7 @@ const Hero: React.FC = () => {
       <Container styles={{ display: "flex", padding: "0px 70px" }}>
         <SContainer>
           <SBoxForm>
-            <STitleForm>Заказать обратный звонок</STitleForm>
+            <STitleForm>Бесплатная консультация</STitleForm>
             <FormContact />
           </SBoxForm>
           <div style={{ position: "absolute", right: "20px", bottom: "20px" }}>
@@ -60,7 +60,7 @@ const Hero: React.FC = () => {
       <Modal
         isOpen={isOpenModal}
         onClose={() => setIsOpenModal(false)}
-        title={"Заказать замер"}
+        title={"Заказать звонок"}
       >
         <FormContact onClick={handleClick} />
       </Modal>

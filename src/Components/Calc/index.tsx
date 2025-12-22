@@ -32,7 +32,7 @@ export const Calc: React.FC = () => {
     useState<WindowType>("odnostvorchatoe");
   const selectedConfigs = windowConfigs[selectedType].typeConfigWindow;
   const [selectedConfig, setSelectedConfig] = useState<number>(0);
-  const [wallColor, setWallColor] = useState("#194c14");
+  const [wallColor, setWallColor] = useState("#33E3A9");
 
   const currentConfig = selectedConfigs[selectedConfig];
   const [groupSelections, setGroupSelections] = useState<

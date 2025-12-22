@@ -1,11 +1,16 @@
 import styled from "styled-components";
-import { color } from "../../assets/globalStyles";
+import { color, fontMixin } from "../../assets/globalStyles";
 
-export const SGallery = styled.div`
+export const SGallery = styled.div.attrs({ className: "gallery" })`
   max-width: 1920px;
   margin: 0 auto;
   padding: 0 20px;
   box-shadow: 0 2px 10px ${color.accent};
+  background-color: white;
+
+  .title {
+    ${fontMixin.title}
+  }
 
   .swiper {
     width: 100%;
@@ -58,7 +63,12 @@ export const SGallery = styled.div`
   }
 `;
 
-export const SImage = styled.img`
+export const STitle = styled.h3.attrs({ className: "gallery__title" })`
+  ${fontMixin.title}
+  text-align: center;
+`;
+
+export const SImage = styled.img.attrs({ className: "gallery__img" })`
   width: 100%;
   height: 100%;
   object-fit: cover;
