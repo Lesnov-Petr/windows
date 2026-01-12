@@ -30,6 +30,8 @@ export const SAuth = styled.div.attrs({ className: "auth" })`
   }
 `;
 
+export const SAuthBtn = styled.button.attrs({ className: "auth__btn" })``;
+
 export const SAuthIcon = styled.img.attrs({ className: "auth__icon" })`
   width: 30px;
   height: 30px;

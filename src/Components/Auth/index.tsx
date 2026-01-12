@@ -7,6 +7,7 @@ import {
 } from "react";
 import { useAppDispatch } from "../../hooks";
 import { signIn } from "../../redux/auth/auth-operations";
+import { actions } from "../../redux/auth/auth-reducer";
 import { Input } from "../../Components/Input";
 import { SAuth, SForm, STitle } from "./styles";
 import { Button } from "../../Components/Button";
@@ -20,15 +21,18 @@ import { LogoFirst } from "../Logo";
 const Auth: React.FC = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const authError = useSelector(authSelectorError);
+  const authErrorSelector = useSelector(authSelectorError);
   const [formData, setFormData] = useState<CredentialsType>({
     identifier: "",
     password: "",
   });
 
+  console.log(authErrorSelector);
+
   useEffect(() => {
-    if (authError) toast.error(authError);
-  }, [authError]);
+    if (authErrorSelector) toast.error(authErrorSelector);
+    dispatch(actions.authError(""));
+  }, [authErrorSelector]);
 
   const handleSubmit = useCallback(
     async (e: FormEvent<HTMLFormElement>) => {

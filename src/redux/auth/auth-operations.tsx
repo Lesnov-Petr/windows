@@ -34,7 +34,6 @@ const signIn =
   (credentials: CredentialsType) => async (dispatch: AppDispatch) => {
     dispatch(authRequest());
     try {
-      console.log(credentials);
       const { data } = await signInQuery(credentials);
 
       token.set(data.token);
@@ -49,11 +48,9 @@ const signIn =
 const logOut = () => async (dispatch: AppDispatch) => {
   dispatch(authRequest());
   try {
-    await logOutQuery();
+    // await logOutQuery();
     token.unset();
     dispatch(logOutSuccess());
-    // Лучше использовать redux-persist или обрабатывать в редюсере
-    localStorage.removeItem("user");
   } catch (error) {
     handleAuthError(error, dispatch, authError);
   }
