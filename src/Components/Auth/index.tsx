@@ -27,8 +27,6 @@ const Auth: React.FC = () => {
     password: "",
   });
 
-  console.log(authErrorSelector);
-
   useEffect(() => {
     if (authErrorSelector) toast.error(authErrorSelector);
     dispatch(actions.authError(""));
