@@ -1,6 +1,6 @@
 import axios from "axios";
 import { CredentialsType } from "../types/credentials";
-axios.defaults.baseURL = `http://api.work-spaces.ru`;
+axios.defaults.baseURL = `https://api.оконный-континент.рф`;
 
 const apiAuth = {
   signUpQuery(user: CredentialsType) {

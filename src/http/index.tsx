@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const API_URL = "http://api.work-spaces.ru/";
+export const API_URL = "https://api.оконный-континент.рф/";
 
 const $api = axios.create({
   withCredentials: true,

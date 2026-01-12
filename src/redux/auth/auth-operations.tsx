@@ -34,7 +34,9 @@ const signIn =
   (credentials: CredentialsType) => async (dispatch: AppDispatch) => {
     dispatch(authRequest());
     try {
+      console.log(credentials);
       const { data } = await signInQuery(credentials);
+
       token.set(data.token);
       dispatch(registerSuccess(data));
       return data;

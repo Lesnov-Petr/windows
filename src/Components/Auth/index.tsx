@@ -38,7 +38,7 @@ const Auth: React.FC = () => {
 
       if (data) {
         setFormData({ identifier: "", password: "" });
-        navigate("/");
+        navigate("/office");
       }
     },
     [dispatch, formData]
