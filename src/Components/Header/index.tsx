@@ -1,4 +1,4 @@
-import { SAuth, SAuthBtn, SAuthIcon, SHeader } from "./styles";
+import { SAuth, SAuthItemBtn, SAuthIcon, SHeader, SListBtn } from "./styles";
 import FormContact from "../Form";
 import { LogoFirst } from "../Logo";
 import { Navigation } from "../Navigation";
@@ -7,6 +7,7 @@ import { Button } from "../Button";
 import { useEffect, useState } from "react";
 import IconAuth from "../../assets/images/iconAdmin.png";
 import IconExit from "../../assets/images/exit.png";
+import IconSuitcase from "../../assets/images/iconSuitcase.png";
 import Modal from "../Modal";
 import { ToolHint } from "../ToolHint";
 import Auth from "../Auth";
@@ -52,15 +53,23 @@ export const Header: React.FC<{}> = () => {
       <Contacts />
       <SAuth>
         {isLoggedOnSelector ? (
-          <SAuthBtn onClick={hadleLogOut}>
-            <SAuthIcon src={IconExit} alt="exitIcon" />
-            <ToolHint>выйти из личного кабинета</ToolHint>
-          </SAuthBtn>
+          <SListBtn>
+            <SAuthItemBtn key={"office"} onClick={() => navigation("/office")}>
+              <SAuthIcon src={IconSuitcase} alt="suitcase" />
+              <ToolHint>личный кабинет</ToolHint>
+            </SAuthItemBtn>
+            <SAuthItemBtn key={"exit"} onClick={hadleLogOut}>
+              <SAuthIcon src={IconExit} alt="exitIcon" />
+              <ToolHint>выйти из личного кабинета</ToolHint>
+            </SAuthItemBtn>
+          </SListBtn>
         ) : (
-          <SAuthBtn onClick={handleAuth}>
-            <SAuthIcon src={IconAuth} alt="authIcon" />
-            <ToolHint>личный кабинет</ToolHint>
-          </SAuthBtn>
+          <SListBtn>
+            <SAuthItemBtn key={"desk"} onClick={handleAuth}>
+              <SAuthIcon src={IconAuth} alt="authIcon" />
+              <ToolHint>вход в личный кабинет</ToolHint>
+            </SAuthItemBtn>
+          </SListBtn>
         )}
       </SAuth>
 

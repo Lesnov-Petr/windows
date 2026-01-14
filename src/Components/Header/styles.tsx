@@ -23,14 +23,20 @@ export const SAuth = styled.div.attrs({ className: "auth" })`
   position: relative;
   display: flex;
   cursor: pointer;
+`;
+
+export const SListBtn = styled.ul.attrs({ className: "auth__listBtn" })`
+  display: flex;
+`;
+
+export const SAuthItemBtn = styled.li.attrs({ className: "auth__itemBtn" })`
+  position: relative;
 
   &:hover ${SToolHint} {
     opacity: 1;
     visibility: visible;
   }
 `;
-
-export const SAuthBtn = styled.button.attrs({ className: "auth__btn" })``;
 
 export const SAuthIcon = styled.img.attrs({ className: "auth__icon" })`
   width: 30px;
