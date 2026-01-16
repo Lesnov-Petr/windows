@@ -8,16 +8,14 @@ type ErrorActionType = (payload: string) => {
 };
 
 // Общий обработчик ошибок
-export const handleAuthError = (
+export const handlerError = (
   error: unknown,
   dispatch: AppDispatch,
   reducerError: ErrorActionType
 ): void => {
   if (axios.isAxiosError(error)) {
     const errorMessage =
-      (error.response?.data as { message?: string })?.message ||
-      error.message ||
-      "Authentication error";
+      (error.response?.data as { message?: string })?.message || error.message;
 
     dispatch(reducerError(errorMessage));
   } else if (error instanceof Error) {

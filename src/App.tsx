@@ -6,19 +6,14 @@ import { Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import { RequireAuth } from "./Components/RequireAuth";
 import { Loader } from "./Components/Loader";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { Container } from "./Components/Container";
+import { Notification } from "./Components/Notification";
 
 function App() {
   return (
     <>
       <div>
-        <ToastContainer
-          position="top-right"
-          autoClose={3000}
-          hideProgressBar={false}
-        />
+        <Notification />
 
         <GlobalStyle />
         <Container>

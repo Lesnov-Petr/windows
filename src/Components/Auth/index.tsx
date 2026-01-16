@@ -1,36 +1,21 @@
-import {
-  ChangeEvent,
-  FormEvent,
-  useCallback,
-  useEffect,
-  useState,
-} from "react";
+import { ChangeEvent, FormEvent, useCallback, useState } from "react";
 import { useAppDispatch } from "../../hooks";
 import { signIn } from "../../redux/auth/auth-operations";
-import { actions } from "../../redux/auth/auth-reducer";
 import { Input } from "../../Components/Input";
 import { SAuth, SForm, STitle } from "./styles";
 import { Button } from "../../Components/Button";
 import { CredentialsType } from "../../types/credentials";
-import { useSelector } from "react-redux";
-import { authSelectorError } from "../../redux/auth/auth-selectors";
-import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { LogoFirst } from "../Logo";
 
 const Auth: React.FC = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const authErrorSelector = useSelector(authSelectorError);
+
   const [formData, setFormData] = useState<CredentialsType>({
     identifier: "",
     password: "",
   });
-
-  useEffect(() => {
-    if (authErrorSelector) toast.error(authErrorSelector);
-    dispatch(actions.authError(""));
-  }, [authErrorSelector]);
 
   const handleSubmit = useCallback(
     async (e: FormEvent<HTMLFormElement>) => {

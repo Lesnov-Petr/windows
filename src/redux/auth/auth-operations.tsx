@@ -1,7 +1,8 @@
 import axios from "axios";
 import { actions } from "./auth-reducer";
 import { AppDispatch, RootState } from "../store";
-import { handleAuthError, apiAuth } from "../../api";
+import { apiAuth } from "../../api/api-auth";
+import { handlerError } from "../../api/errorHandler";
 import { CredentialsType } from "../../types/credentials";
 
 const { signUpQuery, signInQuery, logOutQuery, getCurrentUserQuery } = apiAuth;
@@ -26,7 +27,7 @@ const signUp = (newUser: CredentialsType) => async (dispatch: AppDispatch) => {
     dispatch(registerSuccess(data));
     return data;
   } catch (error) {
-    handleAuthError(error, dispatch, authError);
+    handlerError(error, dispatch, authError);
   }
 };
 
@@ -41,7 +42,7 @@ const signIn =
       return data;
     } catch (error) {
       console.log(error);
-      handleAuthError(error, dispatch, authError);
+      handlerError(error, dispatch, authError);
     }
   };
 
@@ -52,7 +53,7 @@ const logOut = () => async (dispatch: AppDispatch) => {
     token.unset();
     dispatch(logOutSuccess());
   } catch (error) {
-    handleAuthError(error, dispatch, authError);
+    handlerError(error, dispatch, authError);
   }
 };
 
@@ -73,7 +74,7 @@ const getCurrentUser =
     } catch (error) {
       // При ошибке текущего пользователя очищаем токен
       token.unset();
-      handleAuthError(error, dispatch, authError);
+      handlerError(error, dispatch, authError);
     }
   };
 

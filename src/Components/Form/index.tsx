@@ -3,6 +3,8 @@ import { Button } from "../Button";
 import { Input } from "../Input";
 import { SCheckbox, SCheckboxContainer, SCheckboxLabel, SForm } from "./styles";
 import { toast } from "react-toastify";
+import { useAppDispatch } from "../../hooks";
+import { createOrder } from "../../redux/orders/orders-operations";
 
 interface FormProps {
   onClick?: () => void;
@@ -10,12 +12,13 @@ interface FormProps {
 }
 
 const FormContact: React.FC<FormProps> = ({ onClick, styles }) => {
+  const dispatch = useAppDispatch();
   const [isAgreed, setIsAgreed] = useState(false);
   const [agreementError, setAgreementError] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
-    comments: "",
+    description: "",
   });
 
   // Регулярное выражение для телефона (международный формат)
@@ -31,7 +34,7 @@ const FormContact: React.FC<FormProps> = ({ onClick, styles }) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.phone)
       return toast.error("Укажите телефон в формате +7 (917) 123 45 67");
@@ -40,16 +43,18 @@ const FormContact: React.FC<FormProps> = ({ onClick, styles }) => {
       if (!isChecked)
         return toast.error("Укажите телефон в формате +7 (917) 123 45 67");
     }
-
     if (!isAgreed) {
       toast.error("Необходимо дать согласие на обработку персональных данных");
       setAgreementError(true);
       return;
     }
 
+    const data = await dispatch(createOrder(formData));
+    if (!data) return;
+
     console.log(formData);
     toast("Мы Вам перезвоним в ближайшее время");
-    setFormData({ name: "", phone: "", comments: "" });
+    setFormData({ name: "", phone: "", description: "" });
     setIsAgreed(false);
     setAgreementError(false);
     if (onClick) onClick();
@@ -73,8 +78,8 @@ const FormContact: React.FC<FormProps> = ({ onClick, styles }) => {
         style={{ width: "100%" }}
       />
       <Input
-        name="comments"
-        value={formData.comments}
+        name="description"
+        value={formData.description}
         onChange={handleChange}
         placeholder="Комментарий"
         style={{ width: "100%", height: "10vh" }}
