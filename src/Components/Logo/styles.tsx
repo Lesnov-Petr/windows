@@ -4,14 +4,6 @@ import { device } from "../../assets/globalStyles"; // путь к вашему 
 export const SLogo = styled.div.attrs({ className: "logotype" })`
   display: flex;
   justify-content: flex-start;
-
-  @media ${device.mobile} {
-    justify-content: center;
-    padding: 5px 0;
-  }
-  @media ${device.tablet} {
-    justify-content: flex-start;
-  }
 `;
 
 export const SLogoImage = styled.img.attrs({ className: "logotype__img" })`
