@@ -11,12 +11,11 @@ type ErrorActionType = (payload: string) => {
 export const handlerError = (
   error: unknown,
   dispatch: AppDispatch,
-  reducerError: ErrorActionType
+  reducerError: ErrorActionType,
 ): void => {
   if (axios.isAxiosError(error)) {
     const errorMessage =
       (error.response?.data as { message?: string })?.message || error.message;
-
     dispatch(reducerError(errorMessage));
   } else if (error instanceof Error) {
     dispatch(reducerError(error.message));

@@ -3,6 +3,27 @@ import { createGlobalStyle, css } from "styled-components";
 export const cubic = "cubic-bezier(0.4, 0, 0.2, 1);";
 export const ms = "300ms";
 
+//======================== Размеры девайса ===============================
+const size = {
+  mobileS: "320px", // Очень маленькие смартфоны (до 320px)
+  mobileM: "375px", // iPhone 8, SE (2020)
+  mobileL: "767px", // Большие смартфоны (iPhone 12/13/14 Pro Max)
+  tabletS: "768px", // Планшеты в портретной ориентации (iPad, Android)
+  tabletL: "1024px", // Планшеты в альбомной ориентации
+  laptopS: "1024px", // Ноутбуки/нетбуки (11–13")
+  laptopL: "1440px", // Ноутбуки (14–16")
+  desktopS: "1680px", // Десктопы (21–24")
+  desktopM: "1920px", // Full HD (24–27")
+  desktopL: "2560px", // 2K/4K мониторы
+};
+
+export const device = {
+  mobile: `(max-width: ${size.mobileL})`,
+  tablet: `(min-width: ${size.tabletS}) and (max-width: ${size.tabletL})`,
+  laptop: `(min-width: ${size.laptopS}) and (max-width: ${size.laptopL})`,
+  desktop: `(min-width: ${size.desktopS})`,
+};
+
 //======================== Цвета ========================================
 export const color = {
   text: "#413b32",
@@ -16,6 +37,7 @@ export const color = {
   mark: "#7f8c8d",
   logo: "#073826",
   bg: "#faf9f1",
+  bgCards: "#e1eedc",
   disable: "#faf8ea",
   lightAccent: "#6BA1FF",
 };
@@ -23,56 +45,117 @@ export const color = {
 //======================== Шрифты ========================================
 const fontsFamaly = {
   logo: "Amaranth",
-  standart: "Poppins",
+  standard: "Poppins",
 };
+
 const sizeFonts = {
-  mobile: { standart: "12px" },
-  desktop: {
-    standart: "14px",
-    title: "40px",
-    subTitle: "22px",
-    logo: "64px",
+  mobile: {
+    standard: "14px", // Базовый текст (читаемость на малых экранах)
+    title: "24px", // Заголовки H1–H2
+    subTitle: "18px", // Подзаголовки H3–H4
+    logo: "32px", // Логотип/брендовый элемент
   },
-  table: {
-    standart: "14px",
-    title: "30px",
-    subTitle: "18px",
-    logo: "48px",
+  tablet: {
+    standard: "16px", // Комфортное чтение на планшетах
+    title: "28px", // Увеличенные заголовки
+    subTitle: "20px", // Подзаголовки с запасом читаемости
+    logo: "48px", // Визуально заметный логотип
+  },
+  laptop: {
+    standard: "16px", // Стандартный размер для ноутбуков
+    title: "32px", // Выразительные заголовки
+    subTitle: "22px", // Подзаголовки с иерархией
+    logo: "56px", // Акцентный логотип
+  },
+  desktop: {
+    standard: "18px", // Улучшенная читаемость на больших экранах
+    title: "36px", // Крупные заголовки для десктопов
+    subTitle: "24px", // Подзаголовки с визуальным весом
+    logo: "64px", // Монументальный логотип
   },
 };
+
 //======================== MIXIN ========================================
 export const fontMixin = {
   logo: css`
     font-family: ${fontsFamaly.logo};
     font-size: ${sizeFonts.desktop.logo};
-    font-weight: ${400};
-    line-height: ${1.21};
+    font-weight: 400;
+    line-height: 1.21;
     color: white;
+
+    @media ${device.tablet} {
+      font-size: ${sizeFonts.tablet.logo};
+    }
+    @media ${device.mobile} {
+      font-size: ${sizeFonts.mobile.logo};
+    }
+    @media ${device.laptop} {
+      font-size: ${sizeFonts.laptop.logo};
+    }
   `,
-  standart: css`
-    font-family: ${fontsFamaly.standart};
-    font-size: ${sizeFonts.desktop.standart};
-    font-weight: ${400};
-    line-height: ${1};
+
+  standard: css`
+    font-family: ${fontsFamaly.standard};
+    font-size: ${sizeFonts.desktop.standard};
+    font-weight: 400;
+    line-height: 1;
+
+    @media ${device.tablet} {
+      font-size: ${sizeFonts.tablet.standard};
+    }
+    @media ${device.mobile} {
+      font-size: ${sizeFonts.mobile.standard};
+    }
+    @media ${device.laptop} {
+      font-size: ${sizeFonts.laptop.standard};
+    }
   `,
+
   title: css`
-    font-family: ${fontsFamaly.standart};
+    font-family: ${fontsFamaly.standard};
     font-size: ${sizeFonts.desktop.title};
-    font-weight: ${400};
-    line-height: ${1.21};
-    letter-spacing: ${"1.5px"};
+    font-weight: 400;
+    line-height: 1.21;
+    letter-spacing: 1.5px;
+
+    @media ${device.tablet} {
+      font-size: ${sizeFonts.tablet.title};
+      letter-spacing: 1px;
+    }
+    @media ${device.mobile} {
+      font-size: ${sizeFonts.mobile.title};
+      letter-spacing: 0.5px;
+    }
+    @media ${device.laptop} {
+      font-size: ${sizeFonts.laptop.title};
+    }
   `,
+
   subTitle: css`
-    font-family: ${fontsFamaly.standart};
+    font-family: ${fontsFamaly.standard};
     font-size: ${sizeFonts.desktop.subTitle};
-    font-weight: ${400};
-    letter-spacing: ${"2px"};
+    font-weight: 400;
+    letter-spacing: 2px;
+
+    @media ${device.tablet} {
+      font-size: ${sizeFonts.tablet.subTitle};
+      letter-spacing: 1.5px;
+    }
+    @media ${device.mobile} {
+      font-size: ${sizeFonts.mobile.subTitle};
+      letter-spacing: 1px;
+    }
+    @media ${device.laptop} {
+      font-size: ${sizeFonts.laptop.subTitle};
+    }
   `,
 };
 
+// === BTN MIXIN ===
 export const btnMixin = {
   accent: css`
-    ${fontMixin.standart}
+    ${fontMixin.standard} /* Используем готовый шрифт из fontMixin */
     color: ${color.text};
     background-color: ${color.accent};
     padding: 15px 15px;
@@ -83,6 +166,16 @@ export const btnMixin = {
     outline: 1px solid #1ad3d3;
     position: relative;
     overflow: hidden;
+
+    @media ${device.mobile} {
+      padding: 10px 10px;
+    }
+    @media ${device.tablet} {
+      padding: 14px 14px;
+    }
+    @media ${device.laptop} {
+      padding: 16px 16px;
+    }
 
     /* Градиентный эффект при наведении */
     &:hover:not([disabled]) {
@@ -122,70 +215,93 @@ export const btnMixin = {
   `,
 };
 
+// === INPUT MIXIN ===
 export const inputMixin = {
-  standart: css`
-    ${fontMixin.standart}
+  standard: css`
+    ${fontMixin.standard}
     box-sizing: border-box;
     margin-bottom: 20px;
     height: 40px;
+    width: 100%;
     padding-left: 16px;
     border-radius: 8px;
     border: 1px solid rgba(33, 33, 33, 0.2);
     background-color: #fff;
     vertical-align: top;
     transition: outline-color ${ms} ${cubic};
-
-    /* Для многострочного текста */
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-
     box-shadow: 1px 1px 0px 0px rgba(34, 60, 80, 0.2);
 
     &:focus {
       outline: 2px solid ${color.accent};
     }
-
     &:hover {
+      background-color: ${color.accent};
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    @media ${device.mobile} {
+      height: 36px;
+      padding-left: 12px;
+    }
+    @media ${device.tablet} {
+      height: 38px;
+      padding-left: 14px;
+    }
+    @media ${device.laptop} {
+      height: 40px;
+      padding-left: 16px;
+    }
+  `,
+};
+
+// === TEXTAREA MIXIN ===
+export const textareaMixin = {
+  standard: css`
+    ${fontMixin.standard}
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid rgba(33, 33, 33, 0.2);
+    background-color: #fff;
+    vertical-align: top;
+    transition: outline-color ${ms} ${cubic};
+    resize: vertical;
+    box-shadow: 1px 1px 0px 0px rgba(34, 60, 80, 0.2);
+
+    &:focus {
+      outline: 2px solid ${color.accent};
+      background-color: #fff;
+    }
+
+    &:not(:focus):hover {
       background-color: ${color.accent};
     }
 
     &:last-child {
       margin-bottom: 0;
     }
+
+    &::placeholder {
+      color: ${color.text};
+      opacity: 1;
+    }
+
+    @media ${device.mobile} {
+      padding: 10px 12px;
+      margin-bottom: 16px;
+    }
+
+    @media ${device.tablet} {
+      padding: 11px 14px;
+      margin-bottom: 18px;
+    }
   `,
 };
 
-//======================== Размеры девайса ===============================
-const size = {
-  mobileS: "320px",
-  mobileM: "375px",
-  mobileL: "767px",
-  tabletS: "768px",
-  tabletL: "1279px",
-  laptopS: "1280px",
-  laptopM: "1366px",
-  laptopL: "1440px",
-  desktopS: "1680px",
-  desktopM: "1920px",
-  desktopL: "2560px",
-};
-
-export const device = {
-  mobile: `(max-width: ${size.mobileL})`,
-  tablet: `(min-width: ${size.tabletS}) and (max-width: ${size.tabletL})`,
-  laptop: `(min-width: ${size.laptopS}) and (max-width: ${size.laptopL})`,
-  desktop: `(min-width: ${size.desktopS})`,
-};
-
-type DeviceType = keyof typeof device;
-
-export const media = (
-  deviceType: DeviceType,
-  styles: TemplateStringsArray | string
-) => {
-  return `@media ${device[deviceType]} { ${styles} }`;
-};
 //======================== Глобальные стили ===============================
 export const GlobalStyle = createGlobalStyle`
 	body {

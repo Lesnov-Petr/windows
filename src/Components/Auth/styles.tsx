@@ -18,10 +18,6 @@ export const SForm = styled.form.attrs({ className: "auth__form" })`
   @media ${device.tablet} {
     width: 60%;
   }
-
-  /* @media ${device.desktop} {
-    width: 30%;
-  } */
 `;
 
 export const STitle = styled.h2.attrs({ className: "auth__title" })`
@@ -31,13 +27,13 @@ export const STitle = styled.h2.attrs({ className: "auth__title" })`
 `;
 
 export const SLink = styled.a.attrs({ className: "auth__link" })`
-  ${fontMixin.standart}
+  ${fontMixin.standard}
   display: inline-block;
   padding-bottom: 5px;
 `;
 
 export const SLinkRegistration = styled.a.attrs({ className: "auth__link" })`
-  ${fontMixin.standart}
+  ${fontMixin.standard}
   position:relative;
   display: inline-block;
   margin-top: 20px;

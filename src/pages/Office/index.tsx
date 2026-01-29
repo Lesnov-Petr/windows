@@ -1,7 +1,14 @@
 // Office.tsx
 import React, { useEffect, useState } from "react";
-import { SOffice, STabs, STab, STabContent } from "./styles";
-import { SList, SItem, SName, SPhone } from "./styles";
+import {
+  SOffice,
+  STabs,
+  STab,
+  STabContent,
+  SIcon,
+  SWrapperInfo,
+} from "./styles";
+import { SList, SItem, SName, SInfo } from "./styles";
 import {
   clientSelectorClients,
   clientSelectorLoading,
@@ -9,7 +16,7 @@ import {
 import { getAllClients } from "../../redux/clients/client-operation";
 import { useSelector } from "react-redux";
 import { useAppDispatch } from "../../hooks";
-import { ClientType } from "../../types/createClient";
+import { ClientType } from "../../types/client";
 import { Loader } from "../../Components/Loader";
 import {
   orderSelectorLoading,
@@ -17,9 +24,12 @@ import {
 } from "../../redux/orders/orders-selectors";
 import { getAllOrders } from "../../redux/orders/orders-operations";
 import { OrderType } from "../../types/orderType";
+import { useNavigate } from "react-router-dom";
+import iconPhone from "../../assets/images/phone.png";
 
 const Office: React.FC = () => {
   const dispatch = useAppDispatch();
+  const navigation = useNavigate();
   const [activeTab, setActiveTab] = useState<"clients" | "orders">("clients");
   const selectorClients = useSelector(clientSelectorClients);
   const selectorOrders = useSelector(orderSelectorOrders);
@@ -57,9 +67,14 @@ const Office: React.FC = () => {
           activeTab === "clients" && (
             <SList>
               {selectorClients.map((client: ClientType) => (
-                <SItem key={client.id}>
-                  <SName>{client.firstName}</SName>
-                  <SPhone>{client.phone}</SPhone>
+                <SItem
+                  key={client.id}
+                  onClick={() => navigation(`/office/${client.id}`)}
+                >
+                  <SName>{client.name}</SName>
+                  <SWrapperInfo>
+                    <SIcon src={iconPhone} /> <SInfo>{client.phone}</SInfo>
+                  </SWrapperInfo>
                 </SItem>
               ))}
             </SList>
@@ -74,7 +89,9 @@ const Office: React.FC = () => {
               {selectorOrders.map((order: OrderType) => (
                 <SItem key={order.id}>
                   <SName>{order.name}</SName>
-                  <SPhone>{order.phone}</SPhone>
+                  <SWrapperInfo>
+                    <SIcon src={iconPhone} /> <SInfo>{order.phone}</SInfo>
+                  </SWrapperInfo>
                 </SItem>
               ))}
             </SList>

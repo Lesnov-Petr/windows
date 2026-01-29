@@ -32,7 +32,11 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
 
   if (!isOpen) return null;
   return (
-    <SModalOverlay onClick={onClose}>
+    <SModalOverlay
+      onMouseDown={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+    >
       <SModal onClick={(e) => e.stopPropagation()}>
         <SButtonClose onClick={onClose}>
           <CloseSvg />

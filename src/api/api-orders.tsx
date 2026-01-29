@@ -19,7 +19,7 @@ const apiOrders = {
   },
 
   /*Обновление клиента по ID*/
-  updateQuery(id: string, data: OrderType) {
+  updateQuery(id: OrderType["id"], data: OrderType) {
     return axios.patch(`/orders/${id}`, data);
   },
 

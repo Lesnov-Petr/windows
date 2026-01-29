@@ -3,6 +3,7 @@ import { lazy } from "react";
 const Main = lazy(() => import("./pages/Main"));
 const SignUp = lazy(() => import("./pages/SignUp"));
 const Office = lazy(() => import("./pages/Office"));
+const CardClient = lazy(() => import("./pages/CardClient"));
 
 interface Route {
   id: string;
@@ -39,6 +40,15 @@ export const routes: Route[] = [
     label: "office",
     path: "/office",
     component: Office,
+    isProtected: true,
+    redirectTo: "/",
+  },
+
+  {
+    id: "office/cardClient",
+    label: "office/cardClient",
+    path: "/office/:id",
+    component: CardClient,
     isProtected: true,
     redirectTo: "/",
   },

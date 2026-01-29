@@ -5,10 +5,6 @@ import { reducer as reducerClient } from "./clients/client-reducer";
 import { reducer as reducerOrders } from "./orders/orders-reducer";
 import storage from "redux-persist/lib/storage";
 
-// Типы для TypeScript
-export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
-
 const authPersistConfig = {
   key: "authToken",
   storage,
@@ -23,6 +19,10 @@ const store = configureStore({
   },
   devTools: process.env.NODE_ENV === "development",
 });
+
+// Типы для TypeScript
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
 
 const persistor = persistStore(store);
 

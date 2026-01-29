@@ -5,6 +5,7 @@ import { SCheckbox, SCheckboxContainer, SCheckboxLabel, SForm } from "./styles";
 import { toast } from "react-toastify";
 import { useAppDispatch } from "../../hooks";
 import { createOrder } from "../../redux/orders/orders-operations";
+import { Textarea } from "../Textarea";
 
 interface FormProps {
   onClick?: () => void;
@@ -28,31 +29,66 @@ const FormContact: React.FC<FormProps> = ({ onClick, styles }) => {
     setIsAgreed(!isAgreed);
   };
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const formatPhoneToInternational = (phone: string): string | null => {
+    // Удаляем все нецифровые символы (кроме + в начале)
+    const cleaned = phone.replace(/[^\d+]/g, "");
+
+    // Проверяем, есть ли + в начале
+    const hasPlus = cleaned.startsWith("+");
+
+    // Извлекаем только цифры
+    const digits = cleaned.replace("+", "");
+
+    // Если номер начинается с 8 и имеет 11 цифр (включая 8), заменяем 8 на +7
+    if (digits.length === 11 && digits.startsWith("8")) {
+      return "+7" + digits.slice(1);
+    }
+
+    // Если уже есть + и длина корректна (11 цифр после +)
+    if (hasPlus && digits.length === 11) {
+      return "+" + digits;
+    }
+
+    // Если нет + и длина 11 цифр, добавляем +7
+    if (!hasPlus && digits.length === 11) {
+      return "+7" + digits;
+    }
+
+    // Если длина не соответствует (не 11 цифр), возвращаем null
+    return null;
+  };
+
+  const handleChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { name, value } = event.target;
 
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.phone)
+    const formattedPhone = formatPhoneToInternational(formData.phone);
+
+    if (!formattedPhone)
       return toast.error("Укажите телефон в формате +7 (917) 123 45 67");
-    if (formData.phone) {
-      const isChecked = phoneRegExp.test(formData.phone);
+    if (formattedPhone) {
+      const isChecked = phoneRegExp.test(formattedPhone);
       if (!isChecked)
         return toast.error("Укажите телефон в формате +7 (917) 123 45 67");
     }
+
+    setFormData((prev) => ({ ...prev, phone: formattedPhone }));
+
     if (!isAgreed) {
       toast.error("Необходимо дать согласие на обработку персональных данных");
       setAgreementError(true);
       return;
     }
 
-    const data = await dispatch(createOrder(formData));
+    const data = dispatch(createOrder({ ...formData, phone: formattedPhone }));
     if (!data) return;
 
-    console.log(formData);
     toast("Мы Вам перезвоним в ближайшее время");
     setFormData({ name: "", phone: "", description: "" });
     setIsAgreed(false);
@@ -68,21 +104,18 @@ const FormContact: React.FC<FormProps> = ({ onClick, styles }) => {
         value={formData.name}
         onChange={handleChange}
         placeholder="Имя"
-        style={{ width: "100%" }}
       />
       <Input
         name="phone"
         value={formData.phone}
         onChange={handleChange}
         placeholder="Телефон"
-        style={{ width: "100%" }}
       />
-      <Input
+      <Textarea
         name="description"
         value={formData.description}
         onChange={handleChange}
         placeholder="Комментарий"
-        style={{ width: "100%", height: "10vh" }}
       />
       {/* Чекбокс согласия */}
       <SCheckboxContainer

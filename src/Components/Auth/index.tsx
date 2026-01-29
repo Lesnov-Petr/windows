@@ -7,6 +7,7 @@ import { Button } from "../../Components/Button";
 import { CredentialsType } from "../../types/credentials";
 import { useNavigate } from "react-router-dom";
 import { LogoFirst } from "../Logo";
+import { toast } from "react-toastify";
 
 const Auth: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -17,11 +18,46 @@ const Auth: React.FC = () => {
     password: "",
   });
 
+  const formatPhoneToInternational = (phone: string): string | null => {
+    // Удаляем все нецифровые символы (кроме + в начале)
+    const cleaned = phone.replace(/[^\d+]/g, "");
+
+    // Проверяем, есть ли + в начале
+    const hasPlus = cleaned.startsWith("+");
+
+    // Извлекаем только цифры
+    const digits = cleaned.replace("+", "");
+
+    // Если номер начинается с 8 и имеет 11 цифр (включая 8), заменяем 8 на +7
+    if (digits.length === 11 && digits.startsWith("8")) {
+      return "+7" + digits.slice(1);
+    }
+
+    // Если уже есть + и длина корректна (11 цифр после +)
+    if (hasPlus && digits.length === 11) {
+      return "+" + digits;
+    }
+
+    // Если нет + и длина 11 цифр, добавляем +7
+    if (!hasPlus && digits.length === 11) {
+      return "+7" + digits;
+    }
+
+    // Если длина не соответствует (не 11 цифр), возвращаем null
+    return null;
+  };
+
   const handleSubmit = useCallback(
     async (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
 
-      const data = await dispatch(signIn(formData));
+      const formattedPhone = formatPhoneToInternational(formData.identifier);
+      if (!formattedPhone) {
+        return toast.error("Укажите телефон в формате +7 (917) 123 45 67");
+      }
+      const data = await dispatch(
+        signIn({ ...formData, identifier: formattedPhone })
+      );
 
       if (data) {
         setFormData({ identifier: "", password: "" });

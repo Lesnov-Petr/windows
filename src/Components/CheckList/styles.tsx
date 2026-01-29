@@ -18,11 +18,11 @@ export const SItem = styled.li.attrs({ className: "checkList__item" })`
 `;
 
 export const STitle = styled.p.attrs({ className: "checkList__title" })`
-  ${fontMixin.standart};
+  ${fontMixin.standard};
   margin-bottom: 5px;
   text-align: left;
 `;
 
 export const SText = styled.p.attrs({ className: "checkList__text" })`
-  ${fontMixin.standart};
+  ${fontMixin.standard};
 `;

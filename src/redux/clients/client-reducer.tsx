@@ -1,8 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { ClientType } from "../../types/client";
 
 const initialClientState = {
-  clients: [],
-  client: null,
+  clients: [] as ClientType[],
+  client: {} as ClientType,
+  message: "",
   error: null,
   isLoading: false,
 };
@@ -22,7 +24,19 @@ const { actions, reducer } = createSlice({
     },
 
     getOneSuccess: (state, { payload }) => {
-      state.client = payload.client;
+      state.client = payload;
+      state.isLoading = false;
+    },
+
+    updateClientSuccess: (state, { payload }) => {
+      state.client = payload;
+      state.isLoading = false;
+    },
+
+    deleteClientSuccess: (state, { payload }) => {
+      console.log("Сообщение", payload);
+
+      state.message = payload;
       state.isLoading = false;
     },
 

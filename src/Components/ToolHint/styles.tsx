@@ -13,7 +13,9 @@ export const SToolHint = styled.div.attrs({ className: "toolHint" })`
   white-space: nowrap;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s, visibility 0.3s;
+  transition:
+    opacity 0.3s,
+    visibility 0.3s;
 
   &:after {
     content: "";

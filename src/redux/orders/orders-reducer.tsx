@@ -5,6 +5,7 @@ const initialOrderState = {
   order: null,
   error: [],
   isLoading: false,
+  message: "",
 };
 
 const { actions, reducer } = createSlice({
@@ -23,6 +24,16 @@ const { actions, reducer } = createSlice({
 
     getOneSuccess: (state, { payload }) => {
       state.order = payload.order;
+      state.isLoading = false;
+    },
+
+    updateOrderSuccess: (state, { payload }) => {
+      state.order = payload;
+      state.isLoading = false;
+    },
+
+    deleteOrderSuccess: (state, { payload }) => {
+      state.message = payload;
       state.isLoading = false;
     },
 

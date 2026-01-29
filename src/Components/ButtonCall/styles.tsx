@@ -1,5 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import { ReactComponent as PhoneIcon } from "../../assets/images/phone.svg";
+import { device } from "../../assets/globalStyles";
 
 const vibrate = keyframes`
   0% { transform: rotate(0deg) translateX(0); }
@@ -263,9 +264,10 @@ export const SButtonCall = styled.button<{
   }
 
   /* Адаптивность */
-  @media (max-width: 768px) {
-    width: ${(props) => (props.$isFloating ? "120px" : "140px")};
-    height: ${(props) => (props.$isFloating ? "120px" : "140px")};
+
+  @media ${device.mobile} {
+    width: ${(props) => (props.$isFloating ? "100px" : "140px")};
+    height: ${(props) => (props.$isFloating ? "100px" : "140px")};
 
     ${(props) =>
       props.$isFloating &&
@@ -326,11 +328,7 @@ export const ButtonText = styled.span`
   position: relative;
   z-index: 2;
 
-  @media (max-width: 768px) {
+  @media ${device.mobile} {
     font-size: 13px;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 12px;
   }
 `;

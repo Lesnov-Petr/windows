@@ -42,8 +42,49 @@ export const STabContent = styled.div.attrs({ className: "office__content" })`
 
 export const SList = styled.ul.attrs({ className: "office__list" })``;
 
-export const SItem = styled.li.attrs({ className: "office__item" })``;
+export const SItem = styled.li.attrs({ className: "office__item" })`
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border: 1px solid ${color.accent_2};
+  border-radius: 8px;
+  background-color: ${color.bgCards};
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+  transition: box-shadow 0.3s ease;
+  cursor: pointer;
 
-export const SName = styled.p.attrs({ className: "office__name" })``;
+  &:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+`;
 
-export const SPhone = styled.p.attrs({ className: "office__phone" })``;
+export const SWrapperInfo = styled.div.attrs({
+  className: "office__wrapperInfo",
+})`
+  display: flex;
+`;
+
+export const SName = styled.p.attrs({ className: "office__name" })`
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: ${color.text};
+  margin: 0 0 0.5rem 0;
+  line-height: 1.4;
+`;
+
+export const SInfo = styled.p.attrs({ className: "office__info" })`
+  font-size: 0.9rem;
+  color: ${color.textDarkGreen};
+  margin: 0;
+  line-height: 1.4;
+`;
+
+export const SIcon = styled.img.attrs({
+  className: "office__icon",
+})`
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  object-fit: contain;
+`;

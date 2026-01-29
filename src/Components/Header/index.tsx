@@ -16,6 +16,7 @@ import { authSelectorLogged } from "../../redux/auth/auth-selectors";
 import { logOut } from "../../redux/auth/auth-operations";
 import { useAppDispatch } from "../../hooks";
 import { useNavigate } from "react-router-dom";
+import { BurgerMenu } from "../BurgerMenu";
 
 export const Header: React.FC<{}> = () => {
   const dispatch = useAppDispatch();
@@ -42,6 +43,12 @@ export const Header: React.FC<{}> = () => {
     dispatch(logOut());
     navigation("/");
   };
+
+  const menuItems = [
+    { label: "Главная", href: "/" },
+    { label: "О нас", href: "/about" },
+    { label: "Контакты", href: "/contact" },
+  ];
 
   return (
     <SHeader>
@@ -72,7 +79,32 @@ export const Header: React.FC<{}> = () => {
           </SListBtn>
         )}
       </SAuth>
-
+      <BurgerMenu>
+        <SAuth>
+          {isLoggedOnSelector ? (
+            <SListBtn>
+              <SAuthItemBtn
+                key={"office"}
+                onClick={() => navigation("/office")}
+              >
+                <SAuthIcon src={IconSuitcase} alt="suitcase" />
+                <ToolHint>личный кабинет</ToolHint>
+              </SAuthItemBtn>
+              <SAuthItemBtn key={"exit"} onClick={hadleLogOut}>
+                <SAuthIcon src={IconExit} alt="exitIcon" />
+                <ToolHint>выйти из личного кабинета</ToolHint>
+              </SAuthItemBtn>
+            </SListBtn>
+          ) : (
+            <SListBtn>
+              <SAuthItemBtn key={"desk"} onClick={handleAuth}>
+                <SAuthIcon src={IconAuth} alt="authIcon" />
+                <ToolHint>вход в личный кабинет</ToolHint>
+              </SAuthItemBtn>
+            </SListBtn>
+          )}
+        </SAuth>
+      </BurgerMenu>
       <Modal
         isOpen={isOpenModal}
         onClose={() => setIsOpenModal(false)}

@@ -40,13 +40,13 @@ function App() {
                     )
                   }
                 />
-              )
+              ),
             )}
           </Routes>
         </Suspense>
-        <Container>
+        {/* <Container>
           <Footer />
-        </Container>
+        </Container> */}
       </div>
     </>
   );

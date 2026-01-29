@@ -59,7 +59,7 @@ export const SLink = styled.a.attrs({ className: "description__link" })`
     }
 
     .span {
-      ${fontMixin.standart}
+      ${fontMixin.standard}
       font-size:25px;
     }
 

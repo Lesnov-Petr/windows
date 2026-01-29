@@ -1,6 +1,6 @@
 // api/clients.ts
 import axios from "axios";
-import { ClientType } from "../types/createClient";
+import { ClientType, UpdateClientType } from "../types/client";
 
 const apiClients = {
   /*Создание нового клиента*/
@@ -14,12 +14,17 @@ const apiClients = {
   },
 
   /*Получение конкретного клиента по ID*/
-  findOneQuery(id: string) {
-    return axios.get(`/clients/${id}`);
+  findOneByIdQuery(id: string) {
+    return axios.get(`/clients/search/?id=${id}`);
+  },
+
+  /*Получение конкретного клиента по ID*/
+  findOneByPhoneQuery(phone: string) {
+    return axios.get(`/clients/search/?phone=${phone}`);
   },
 
   /*Обновление клиента по ID*/
-  updateQuery(id: string, data: ClientType) {
+  updateQuery(id: ClientType["id"], data: UpdateClientType) {
     return axios.patch(`/clients/${id}`, data);
   },
 

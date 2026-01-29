@@ -10,6 +10,8 @@ const {
   createSuccess,
   getAllSuccess,
   getOneSuccess,
+  updateOrderSuccess,
+  deleteOrderSuccess,
   orderRequest,
   orderError,
 } = actions;
@@ -19,8 +21,6 @@ export const createOrder =
     dispatch(orderRequest());
     try {
       const { data } = await createQuery(newOrder);
-      console.log(data);
-
       dispatch(createSuccess(data));
       return data;
     } catch (error) {
@@ -40,3 +40,31 @@ export const getAllOrders = () => async (dispatch: AppDispatch) => {
     handlerError(error, dispatch, orderError);
   }
 };
+
+export const updateOrder =
+  (id: OrderType["id"], updatedOrder: OrderType) =>
+  async (dispatch: AppDispatch) => {
+    dispatch(orderRequest());
+    try {
+      const { data } = await updateQuery(id, updatedOrder);
+      console.log(data);
+
+      dispatch(updateOrderSuccess(data));
+    } catch (error) {
+      console.log(error);
+      handlerError(error, dispatch, orderError);
+    }
+  };
+
+export const deleteOrder =
+  (id: OrderType["id"]) => async (dispatch: AppDispatch) => {
+    dispatch(orderRequest());
+    try {
+      if (!id) return;
+      const { data } = await deleteQuery(id);
+      dispatch(deleteOrderSuccess(data.message));
+    } catch (error) {
+      console.log(error);
+      handlerError(error, dispatch, orderError);
+    }
+  };

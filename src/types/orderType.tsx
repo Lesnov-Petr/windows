@@ -4,4 +4,5 @@ export interface OrderType {
   address?: string;
   phone: string;
   description?: string;
+  createdAt?: string;
 }

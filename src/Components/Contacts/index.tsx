@@ -9,17 +9,17 @@ import {
   SWorkTime,
 } from "./styles";
 import { ReactComponent as Telegram } from "../../assets/images/telegram.svg";
-import { ReactComponent as Whatsapp } from "../../assets/images/whatsapp.svg";
+import { ReactComponent as Max } from "../../assets/images/max.svg";
 import { ReactComponent as VK } from "../../assets/images/vk.svg";
 import { ReactComponent as Phone } from "../../assets/images/phone.svg";
 
 export const Contacts: React.FC = () => {
   const socials = [
     {
-      id: "whatsapp",
-      Icon: Whatsapp,
-      appUrl: "whatsapp://send?phone=79684888586",
-      webUrl: "https://web.whatsapp.com/send?phone=79684888586",
+      id: "max",
+      Icon: Max,
+      appUrl: "https://web.max.ru?phone=79684888586",
+      webUrl: "https://web.max.ru",
     },
     {
       id: "telegram",
