@@ -26,7 +26,7 @@ export const SList = styled.ul.attrs({ className: "header__list" })`
 
 export const SLink = styled(NavLink).attrs({ className: "header__link" })`
   ${fontMixin.standard}
-  font-size: 20px;
+  font-size: 24px;
   height: auto;
   padding: 10px 15px;
   border-radius: 4px;

@@ -54,15 +54,17 @@ export const FormUpdateClient: React.FC<FormUpdateClientProps> = ({
       <STitle>Обновить данные клиента</STitle>
       {keys.map((key) => (
         <SWrapper key={key}>
-          <SLabel>{`${key}: `}</SLabel>
+          <SLabel htmlFor={`field-${key}`}>{`${key}: `}</SLabel>
           {key === "Комментарий" ? (
             <Textarea
+              id={`field-${key}`}
               name={key}
               value={formData[key]?.toString()}
               onChange={handleChange}
             />
           ) : (
             <Input
+              id={`field-${key}`}
               name={key}
               value={formData[key]?.toString()}
               onChange={handleChange}

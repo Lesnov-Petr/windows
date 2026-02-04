@@ -18,7 +18,7 @@ const Main: React.FC<{}> = () => {
     <SMain>
       <Hero />
       <Description />
-      <Calc />
+      {/* <Calc /> */}
       {/* <Gallery /> */}
       <div style={{ position: "absolute", right: "20px", bottom: "20px" }}>
         <ButtonCall onClick={handleClick} floating={true} hideOnTop={true} />

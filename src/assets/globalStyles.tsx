@@ -1,4 +1,6 @@
 import { createGlobalStyle, css } from "styled-components";
+import "./fonts.css";
+import { title } from "process";
 
 export const cubic = "cubic-bezier(0.4, 0, 0.2, 1);";
 export const ms = "300ms";
@@ -36,16 +38,18 @@ export const color = {
   hoverAccent: "#a8c79a",
   mark: "#7f8c8d",
   logo: "#073826",
-  bg: "#faf9f1",
+  bg: "#fcf4e6",
   bgCards: "#e1eedc",
   disable: "#faf8ea",
   lightAccent: "#6BA1FF",
+  white: "#f8f1f1",
 };
 
 //======================== Шрифты ========================================
 const fontsFamaly = {
   logo: "Amaranth",
   standard: "Poppins",
+  title: "Luckiest Guy",
 };
 
 const sizeFonts = {
@@ -96,7 +100,7 @@ export const fontMixin = {
   `,
 
   standard: css`
-    font-family: ${fontsFamaly.standard};
+    font-family: ${fontsFamaly.standard} sans-serif;
     font-size: ${sizeFonts.desktop.standard};
     font-weight: 400;
     line-height: 1;
@@ -113,7 +117,7 @@ export const fontMixin = {
   `,
 
   title: css`
-    font-family: ${fontsFamaly.standard};
+    font-family: ${fontsFamaly.title};
     font-size: ${sizeFonts.desktop.title};
     font-weight: 400;
     line-height: 1.21;

@@ -3,7 +3,7 @@ import { device } from "../../assets/globalStyles";
 
 export const SContainer = styled.div.attrs({ className: "container" })`
   width: 1200px;
-  padding: 0 20px;
+  padding: 120px 20px 0 20px;
   margin: 0 auto;
 
   @media ${device.mobile} {

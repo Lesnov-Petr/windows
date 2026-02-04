@@ -1,22 +1,36 @@
 import { styled } from "styled-components";
-import { device } from "../../assets/globalStyles";
+import { color, device } from "../../assets/globalStyles";
 import { SToolHint } from "../ToolHint/styles";
 
 export const SHeader = styled.div.attrs({ className: "header" })`
+  position: absolute;
+  top: 8%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
-  width: 100%;
+  width: 85%;
   height: 110px;
+  padding: 20px;
   justify-content: space-between;
   align-items: center;
 
+  /* Прозрачный матовый фон */
+  background-color: rgba(${color.textDarkGreen}, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* для Safari */
+  border-radius: 22px;
+
   @media ${device.mobile} {
+    width: 100%;
     height: 80px;
   }
   @media ${device.tablet} {
+    width: 95%;
     height: 90px;
   }
 
   @media ${device.laptop} {
+    width: 95%;
     height: 100px;
   }
 `;

@@ -44,7 +44,7 @@ export const SLabel = styled.label.attrs({
 })`
   ${fontMixin.standard}
   display: block;
-  margin-right: 10px;
+  margin-right: 5px;
   color: ${color.text};
-  min-width: 20%;
+  min-width: 25%;
 `;

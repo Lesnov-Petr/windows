@@ -2,6 +2,7 @@ import { ChangeEvent } from "react";
 import { SInput } from "./styles";
 
 interface InputProps {
+  id?: string;
   name: string;
   value: string | number;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
@@ -11,6 +12,7 @@ interface InputProps {
 }
 
 export const Input: React.FC<InputProps> = ({
+  id,
   name,
   type = "text",
   value,
@@ -20,6 +22,7 @@ export const Input: React.FC<InputProps> = ({
 }) => {
   return (
     <SInput
+      id={id}
       name={name}
       type={type}
       value={value}

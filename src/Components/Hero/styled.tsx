@@ -1,13 +1,14 @@
 import styled from "styled-components";
-import heroImg from "../../assets/images/heroImg.png";
+import heroImg from "../../assets/images/heroImg2.jpeg";
 import { color, fontMixin, device } from "../../assets/globalStyles";
+import { ReactComponent as IconQuality } from "../../assets/images/iconQuality.svg";
+import { ReactComponent as IconQualityCheck } from "../../assets/images/iconQualityCheck.svg";
 
 export const SHero = styled.div.attrs({ className: "hero" })`
   display: flex;
   background: url(${heroImg}) center/100% auto no-repeat;
   width: 100%;
-  height: 600px;
-  padding: 40px 0;
+  height: 100vh;
 
   @media ${device.mobile} {
     height: 400px;
@@ -22,20 +23,68 @@ export const SHero = styled.div.attrs({ className: "hero" })`
 export const SContainer = styled.div.attrs({ className: "hero__container" })`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   width: 50%;
+  gap: 20px;
+
+  &:first-child {
+    padding-left: 50px;
+    align-items: start;
+    justify-content: center;
+
+    @media ${device.tablet} {
+      width: 80%;
+    }
+  }
+
+  &:nth-child(2) {
+    justify-content: end;
+    padding-bottom: 80px;
+
+    @media ${device.laptop} {
+      padding-bottom: 40px;
+    }
+  }
+`;
+
+export const SBoxTitle = styled.div.attrs({ className: "hero__boxTitle" })`
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border: 1px solid ${color.accent_2};
+
+  /* Прозрачный матовый фон */
+  background-color: rgba(${color.textDarkGreen}, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* для Safari */
+  border-radius: 22px;
+
+  @media ${device.laptop} {
+    padding: 10px;
+  }
+
+  @media ${device.tablet} {
+    padding: 5px;
+  }
 `;
 
 export const STitle = styled.h1.attrs({ className: "hero__title" })`
   ${fontMixin.title}
-  font-size: 86px;
-  color: black;
+  font-size: 60px;
+  font-weight: 600;
+  color: ${color.textDarkGreen};
+
   @media ${device.mobile} {
-    font-size: 48px;
+    font-size: 24px;
     text-align: center;
   }
   @media ${device.tablet} {
+    font-size: 36px;
+    text-align: left;
+  }
+
+  @media ${device.laptop} {
+    font-size: 40px;
     text-align: left;
   }
 `;
@@ -62,6 +111,7 @@ export const SItem = styled.li.attrs({ className: "hero__item" })`
   display: flex;
   align-items: center;
   gap: 10px;
+  padding-left: 18px;
 
   @media ${device.mobile} {
     flex-direction: column;
@@ -70,30 +120,55 @@ export const SItem = styled.li.attrs({ className: "hero__item" })`
   }
 `;
 
-export const SIcon = styled.img.attrs({ className: "hero__icon" })`
-  width: 50px;
-  border: 1px solid ${color.accent_2};
-  background-color: ${color.accent_2}50;
-  border-radius: 8px;
-  padding: 4px;
+export const SIconQuality = styled(IconQuality).attrs({
+  className: "hero__icon",
+})`
+  width: 60px;
+  margin-right: 20px;
+
+  fill: ${color.white};
 
   @media ${device.mobile} {
     width: 40px;
-    padding: 3px;
   }
   @media ${device.tablet} {
-    width: 45px;
-    padding: 3.5px;
+    width: 55px;
   }
+`;
+
+export const SIcon = styled(IconQualityCheck).attrs({
+  className: "hero__icon",
+})`
+  width: 25px;
+  margin-right: 20px;
+
+  fill: ${color.accent_2};
+
+  @media ${device.mobile} {
+    width: 18px;
+  }
+  @media ${device.tablet} {
+    width: 20px;
+  }
+`;
+
+export const SText = styled.p.attrs({ className: "hero__text" })`
+  ${fontMixin.standard}
+  color:${color.accent_2}
 `;
 
 export const SBoxForm = styled.div.attrs({ className: "hero__boxForm" })`
   width: 50%;
-  height: 90%;
+
   padding: 20px;
   border: 1px solid ${color.accent_2};
   border-radius: 8px;
-  background-color: ${color.bg};
+
+  /* Прозрачный матовый фон */
+  background-color: rgba(${color.textDarkGreen}, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* для Safari */
+  border-radius: 22px;
 
   @media ${device.mobile} {
     display: none;
@@ -102,7 +177,7 @@ export const SBoxForm = styled.div.attrs({ className: "hero__boxForm" })`
     display: none;
   }
   @media ${device.laptop} {
-    width: 80%;
+    min-width: 70%;
   }
 `;
 

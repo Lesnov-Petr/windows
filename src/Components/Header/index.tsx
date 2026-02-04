@@ -51,35 +51,14 @@ export const Header: React.FC<{}> = () => {
   ];
 
   return (
-    <SHeader>
-      <LogoFirst />
-      <Navigation />
-      <Button type="button" onClick={handleClick}>
-        Заказать замер
-      </Button>
-      <Contacts />
-      <SAuth>
-        {isLoggedOnSelector ? (
-          <SListBtn>
-            <SAuthItemBtn key={"office"} onClick={() => navigation("/office")}>
-              <SAuthIcon src={IconSuitcase} alt="suitcase" />
-              <ToolHint>личный кабинет</ToolHint>
-            </SAuthItemBtn>
-            <SAuthItemBtn key={"exit"} onClick={hadleLogOut}>
-              <SAuthIcon src={IconExit} alt="exitIcon" />
-              <ToolHint>выйти из личного кабинета</ToolHint>
-            </SAuthItemBtn>
-          </SListBtn>
-        ) : (
-          <SListBtn>
-            <SAuthItemBtn key={"desk"} onClick={handleAuth}>
-              <SAuthIcon src={IconAuth} alt="authIcon" />
-              <ToolHint>вход в личный кабинет</ToolHint>
-            </SAuthItemBtn>
-          </SListBtn>
-        )}
-      </SAuth>
-      <BurgerMenu>
+    <>
+      <SHeader>
+        <LogoFirst />
+        <Navigation />
+        <Button type="button" onClick={handleClick}>
+          Заказать замер
+        </Button>
+        <Contacts />
         <SAuth>
           {isLoggedOnSelector ? (
             <SListBtn>
@@ -104,7 +83,33 @@ export const Header: React.FC<{}> = () => {
             </SListBtn>
           )}
         </SAuth>
-      </BurgerMenu>
+        <BurgerMenu>
+          <SAuth>
+            {isLoggedOnSelector ? (
+              <SListBtn>
+                <SAuthItemBtn
+                  key={"office"}
+                  onClick={() => navigation("/office")}
+                >
+                  <SAuthIcon src={IconSuitcase} alt="suitcase" />
+                  <ToolHint>личный кабинет</ToolHint>
+                </SAuthItemBtn>
+                <SAuthItemBtn key={"exit"} onClick={hadleLogOut}>
+                  <SAuthIcon src={IconExit} alt="exitIcon" />
+                  <ToolHint>выйти из личного кабинета</ToolHint>
+                </SAuthItemBtn>
+              </SListBtn>
+            ) : (
+              <SListBtn>
+                <SAuthItemBtn key={"desk"} onClick={handleAuth}>
+                  <SAuthIcon src={IconAuth} alt="authIcon" />
+                  <ToolHint>вход в личный кабинет</ToolHint>
+                </SAuthItemBtn>
+              </SListBtn>
+            )}
+          </SAuth>
+        </BurgerMenu>
+      </SHeader>
       <Modal
         isOpen={isOpenModal}
         onClose={() => setIsOpenModal(false)}
@@ -115,6 +120,6 @@ export const Header: React.FC<{}> = () => {
       <Modal isOpen={isModalAuth} onClose={() => setModalAuth(false)}>
         <Auth />
       </Modal>
-    </SHeader>
+    </>
   );
 };

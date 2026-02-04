@@ -29,9 +29,9 @@ export const SModalOverlay = styled.div.attrs({
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
   animation: ${fadeIn} 0.3s ease-out;
   backdrop-filter: blur(4px);
+  z-index: 3;
 `;
 
 export const SModal = styled.div.attrs({

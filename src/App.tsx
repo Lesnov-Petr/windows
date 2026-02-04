@@ -14,11 +14,8 @@ function App() {
     <>
       <div>
         <Notification />
-
         <GlobalStyle />
-        <Container>
-          <Header />
-        </Container>
+        <Header />
         <Suspense fallback={<Loader />}>
           <Routes>
             {routes.map(
@@ -34,9 +31,7 @@ function App() {
                         </Container>
                       </RequireAuth>
                     ) : (
-                      // <Container>
                       <Component />
-                      // </Container>
                     )
                   }
                 />

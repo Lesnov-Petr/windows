@@ -4,8 +4,7 @@ import { device } from "../../assets/globalStyles"; // путь к вашему 
 
 export const SContacts = styled.div.attrs({ className: "contacts" })`
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  gap: 20px;
 
   @media ${device.mobile} {
     display: none;
@@ -16,9 +15,11 @@ export const SContacts = styled.div.attrs({ className: "contacts" })`
   }
 `;
 
-export const SBox = styled.p.attrs({ className: "contacts__box" })`
+export const SBox = styled.div.attrs({ className: "contacts__box" })`
   display: flex;
-  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 10px;
 
   @media ${device.mobile} {
@@ -33,11 +34,13 @@ export const SBox = styled.p.attrs({ className: "contacts__box" })`
 `;
 
 export const STitle = styled.p.attrs({ className: "contacts__title" })`
-  ${fontMixin.standard};
-  font-size: 18px;
+  ${fontMixin.title};
+  font-size: 20px;
   display: inherit;
   width: 100%;
   align-items: center;
+  color: ${color.textDarkGreen};
+  font-weight: 600;
 
   @media ${device.mobile} {
     text-align: center;
@@ -50,10 +53,11 @@ export const STitle = styled.p.attrs({ className: "contacts__title" })`
 
 export const SList = styled.ul.attrs({ className: "contacts__list" })`
   display: inherit;
+  flex-direction: column;
   list-style: none;
   padding: 0;
   margin: 0;
-  gap: 15px;
+  gap: 5px;
 
   @media ${device.mobile} {
     flex-direction: column;
@@ -106,9 +110,22 @@ export const SLink = styled.a.attrs({ className: "social__link" })`
   }
 `;
 
+export const SBoxPhone = styled.div.attrs({ className: "contacts__boxPhone" })`
+  display: flex;
+  width: 100%;
+  gap: 10px;
+
+  @media ${device.mobile} {
+  }
+
+  @media ${device.tablet} {
+  }
+`;
+
 export const SPhone = styled.p.attrs({ className: "contacts__phone" })`
   ${fontMixin.subTitle};
-  color: ${color.text};
+  color: ${color.textDarkGreen};
+  font-weight: 600;
 
   @media ${device.mobile} {
     text-align: center;
@@ -123,7 +140,7 @@ export const SPhone = styled.p.attrs({ className: "contacts__phone" })`
   }
 `;
 
-export const SWorkTime = styled.p.attrs({ className: "contacts__qorkTime" })`
+export const SWorkTime = styled.p.attrs({ className: "contacts__workTime" })`
   ${fontMixin.standard};
   color: ${color.accent_2};
 

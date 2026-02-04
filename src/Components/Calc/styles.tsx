@@ -16,7 +16,15 @@ interface SOptionButtonProps {
 }
 
 export const SCalc = styled.section.attrs({ className: "calc" })`
-  padding: 60px 0;
+  background-color: ${color.bg};
+`;
+
+export const SBox = styled.div.attrs({ className: "calc__box" })`
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
   background-color: ${color.bg};
 `;
 
@@ -150,16 +158,19 @@ export const SImageContainer = styled.div.attrs({
   position: relative;
   opacity: ${(props) => (props.$isChanging ? 0.6 : 1)};
   transform: ${(props) => (props.$isChanging ? "scale(0.98)" : "scale(1)")};
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
 `;
 
 export const SPreviewWrapper = styled.div.attrs({
   className: "clac__previewWrapper",
 })<SColorPickerProps>`
   position: relative;
-  width: 600px;
-  height: 600px;
+  width: 400px;
+  height: 400px;
   margin-top: 20px;
+  border-radius: 8px;
   background-color: ${({ $color }) => $color};
 `;
 
@@ -173,7 +184,8 @@ export const SWindowImage = styled.img.attrs({
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   opacity: ${(props) => (props.$isHidden ? 0 : 1)};
-  transform: ${(props) => (props.$isChanging ? "scale(0.95)" : "scale(1)")};
+  /* transform: ${(props) =>
+    props.$isChanging ? "scale(0.95)" : "scale(1)"}; */
 
   &:hover {
     transform: scale(1.02);

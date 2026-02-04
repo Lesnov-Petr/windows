@@ -23,6 +23,7 @@ import {
   STitleColorProfile,
   SBoxColorProfile,
   SPreviewProfile,
+  SBox,
 } from "./styles";
 import { ToolHint } from "../ToolHint";
 
@@ -135,7 +136,7 @@ export const Calc: React.FC = () => {
 
   return (
     <SCalc>
-      <Container>
+      <SBox>
         <STitle>Калькулятор стоимости</STitle>
 
         <SOptionTitle>Выберите тип окна:</SOptionTitle>
@@ -239,7 +240,7 @@ export const Calc: React.FC = () => {
             </SOptions>
           </div>
         </SCalcContent>
-      </Container>
+      </SBox>
     </SCalc>
   );
 };
