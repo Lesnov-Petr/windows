@@ -33,7 +33,7 @@ export const SLink = styled.a.attrs({ className: "description__link" })`
   position: relative;
   display: block;
   overflow: hidden;
-  flex: 1 1 calc(25% - 15px);
+  flex: 0 1 calc(25% - 15px);
   min-width: 250px;
   border: 1px solid ${color.accent_2};
   border-radius: 8px;

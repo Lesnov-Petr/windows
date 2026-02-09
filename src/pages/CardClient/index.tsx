@@ -29,8 +29,11 @@ import { OrderType } from "../../types/orderType";
 import { ToolHint } from "../../Components/ToolHint";
 import { FormUpdateClient } from "../../Components/FormUpdateClient";
 import { Confirm } from "../../Components/Confirm/Index";
-import { deleteOrder } from "../../redux/orders/orders-operations";
-import { orderSelectorMessage } from "../../redux/orders/orders-selectors";
+import {
+  deleteOrder,
+  getAllOrdersByIdClient,
+} from "../../redux/orders/orders-operations";
+import { orderSelectorOrders } from "../../redux/orders/orders-selectors";
 import iconPhone from "../../assets/images/phone.png";
 import iconEmail from "../../assets/images/email.png";
 import iconUpdate from "../../assets/images/update.png";
@@ -42,15 +45,12 @@ const CardClient: React.FC = () => {
   const navigation = useNavigate();
   const { id } = useParams<{ id: string }>();
   const clientSelector = useSelector(clientSelectorClient);
-  const [listOrders, setListOrders] = useState<OrderType[]>([]);
+  const ordersSelector = useSelector(orderSelectorOrders);
   const [isUpdateClientModal, setIsUpdateClientModal] = useState(false);
   const clientSelectorNotificatiion = useSelector(clientSelectorMessage);
   const isLoadingSelector = useSelector(clientSelectorLoading);
-  const [isConfirm, setConfirm] = useState({
-    id: "",
-    confirm: false,
-    question: "",
-  });
+  const [question, setQuestion] = useState("");
+  const [func, setFunc] = useState<() => void>(() => {});
 
   const { name, lastName, createdAt, phone, email } = clientSelector;
 
@@ -61,26 +61,16 @@ const CardClient: React.FC = () => {
   }, [id]);
 
   useEffect(() => {
-    if (clientSelector.orders) setListOrders([...clientSelector.orders]);
-  }, [clientSelector.orders]);
+    if (id) dispatch(getAllOrdersByIdClient(id));
+  }, []);
 
   useEffect(() => {
     if (clientSelectorNotificatiion) navigation("/office");
   }, [clientSelectorNotificatiion]);
 
-  useEffect(() => {
-    if (isConfirm.confirm) {
-      if (isConfirm.id === id) {
-        dispatch(deleteClient(isConfirm.id));
-      } else {
-        dispatch(deleteOrder(isConfirm.id));
-        setListOrders((prev) =>
-          prev.filter((order) => order.id !== isConfirm.id),
-        );
-      }
-    }
-    setConfirm({ id: "", confirm: false, question: "" });
-  }, [isConfirm.confirm]);
+  const handleDeleteOrder = (orderId: string) => {
+    dispatch(deleteOrder(orderId));
+  };
 
   return (
     <>
@@ -96,14 +86,9 @@ const CardClient: React.FC = () => {
             </SButton>
             <SButton
               onClick={() => {
-                if (id) {
-                  setConfirm({
-                    id: id,
-                    confirm: false,
-                    question:
-                      "Карточка клиента и его заказы будут удалены с базы данных",
-                  });
-                }
+                setQuestion(
+                  "Карточка клиента и его заказы будут удалены с базы данных",
+                );
               }}
             >
               <SIcon src={iconDelete} alt="удаление" />
@@ -139,17 +124,17 @@ const CardClient: React.FC = () => {
               <SValue>{email || "Не указан"}</SValue>
             </SWrapperInfo>
           </SInfo>
-          {listOrders.length > 0 && (
+          {ordersSelector.length > 0 && (
             <SList>
-              {listOrders.map((order: OrderType) => (
+              {ordersSelector.map((order: OrderType) => (
                 <SItem>
                   <SButton
                     onClick={() => {
                       if (order.id) {
-                        setConfirm({
-                          id: order.id,
-                          confirm: false,
-                          question: "Заказ будет удален",
+                        setQuestion("Заказ будет удален");
+
+                        setFunc(() => () => {
+                          if (order.id) handleDeleteOrder(order.id);
                         });
                       }
                     }}
@@ -192,8 +177,17 @@ const CardClient: React.FC = () => {
               onClose={() => setIsUpdateClientModal(false)}
             />
           </Modal>
-          {isConfirm.question && (
-            <Confirm confirm={isConfirm} onConfirm={setConfirm} />
+          {question && (
+            <Confirm
+              question={question}
+              onConfirm={(confirmed) => {
+                if (confirmed) {
+                  func();
+                  setFunc(() => {});
+                }
+                setQuestion("");
+              }}
+            />
           )}
         </SCardClient>
       )}

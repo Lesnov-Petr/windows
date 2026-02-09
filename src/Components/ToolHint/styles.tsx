@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const SToolHint = styled.div.attrs({ className: "toolHint" })`
   position: absolute;
-  bottom: 110%;
+  bottom: 120%;
   left: 50%;
   transform: translateX(-50%);
   background-color: rgba(0, 0, 0, 0.8);

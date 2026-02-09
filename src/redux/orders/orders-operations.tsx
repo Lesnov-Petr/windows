@@ -4,8 +4,14 @@ import { OrderType } from "../../types/orderType";
 import { apiOrders } from "../../api/api-orders";
 import { handlerError } from "../../api/errorHandler";
 
-const { createQuery, findAllQuery, findOneQuery, updateQuery, deleteQuery } =
-  apiOrders;
+const {
+  createQuery,
+  findAllQuery,
+  findOneQuery,
+  updateQuery,
+  deleteQuery,
+  findAllByIdClientQuery,
+} = apiOrders;
 const {
   createSuccess,
   getAllSuccess,
@@ -41,6 +47,18 @@ export const getAllOrders = () => async (dispatch: AppDispatch) => {
   }
 };
 
+export const getAllOrdersByIdClient =
+  (id: string) => async (dispatch: AppDispatch) => {
+    dispatch(orderRequest());
+    try {
+      const { data } = await findAllByIdClientQuery(id);
+      dispatch(getAllSuccess(data));
+    } catch (error) {
+      console.log(error);
+      handlerError(error, dispatch, orderError);
+    }
+  };
+
 export const updateOrder =
   (id: OrderType["id"], updatedOrder: OrderType) =>
   async (dispatch: AppDispatch) => {
@@ -62,7 +80,7 @@ export const deleteOrder =
     try {
       if (!id) return;
       const { data } = await deleteQuery(id);
-      dispatch(deleteOrderSuccess(data.message));
+      dispatch(deleteOrderSuccess(data));
     } catch (error) {
       console.log(error);
       handlerError(error, dispatch, orderError);

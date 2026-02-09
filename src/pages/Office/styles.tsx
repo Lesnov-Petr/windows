@@ -47,10 +47,10 @@ export const SItem = styled.li.attrs({ className: "office__item" })`
   flex-direction: column;
   padding: 1rem;
   border: 1px solid ${color.accent_2};
-  border-radius: 8px;
+  border-radius: 4px;
   background-color: ${color.bgCards};
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-bottom: 1rem;
+  margin-bottom: 0.1rem;
   transition: box-shadow 0.3s ease;
   cursor: pointer;
 
@@ -65,12 +65,16 @@ export const SWrapperInfo = styled.div.attrs({
   display: flex;
 `;
 
-export const SName = styled.p.attrs({ className: "office__name" })`
+export const SText = styled.p.attrs({ className: "office__text" })`
   font-size: 1.1rem;
   font-weight: 600;
   color: ${color.text};
-  margin: 0 0 0.5rem 0;
+  margin-bottom: 5px;
   line-height: 1.4;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 `;
 
 export const SInfo = styled.p.attrs({ className: "office__info" })`
@@ -78,13 +82,4 @@ export const SInfo = styled.p.attrs({ className: "office__info" })`
   color: ${color.textDarkGreen};
   margin: 0;
   line-height: 1.4;
-`;
-
-export const SIcon = styled.img.attrs({
-  className: "office__icon",
-})`
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
-  object-fit: contain;
 `;

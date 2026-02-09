@@ -86,7 +86,7 @@ export const fontMixin = {
     font-size: ${sizeFonts.desktop.logo};
     font-weight: 400;
     line-height: 1.21;
-    color: white;
+    color: ${color.text};
 
     @media ${device.tablet} {
       font-size: ${sizeFonts.tablet.logo};

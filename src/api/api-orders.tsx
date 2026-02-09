@@ -8,22 +8,27 @@ const apiOrders = {
     return axios.post("/orders", data);
   },
 
-  /*Получение списка всех клиентов*/
+  /*Получение списка всех заказов*/
   findAllQuery() {
     return axios.get("/orders");
   },
 
-  /*Получение конкретного клиента по ID*/
+  /*Получение списка всех заказов клиента*/
+  findAllByIdClientQuery(id: string) {
+    return axios.get(`/orders/client/${id}`);
+  },
+
+  /*Получение конкретного заказа по ID*/
   findOneQuery(id: string) {
     return axios.get(`/orders/${id}`);
   },
 
-  /*Обновление клиента по ID*/
+  /*Обновление заказа по ID*/
   updateQuery(id: OrderType["id"], data: OrderType) {
     return axios.patch(`/orders/${id}`, data);
   },
 
-  /*Удаление клиента по ID*/
+  /*Удаление заказа по ID*/
   deleteQuery(id: string) {
     return axios.delete(`/orders/${id}`);
   },

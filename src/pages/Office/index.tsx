@@ -1,36 +1,33 @@
-// Office.tsx
 import React, { useEffect, useState } from "react";
-import {
-  SOffice,
-  STabs,
-  STab,
-  STabContent,
-  SIcon,
-  SWrapperInfo,
-} from "./styles";
-import { SList, SItem, SName, SInfo } from "./styles";
-import {
-  clientSelectorClients,
-  clientSelectorLoading,
-} from "../../redux/clients/client-selectors";
+import { Price } from "./Price";
+import { SOffice, STabs, STab, STabContent } from "./styles";
+import { ButtonIcon } from "../../Components/ButtonIcon";
+import { SList, SItem, SText, SInfo } from "./styles";
+import { SWrapperInfo } from "./styles";
 import { getAllClients } from "../../redux/clients/client-operation";
 import { useSelector } from "react-redux";
 import { useAppDispatch } from "../../hooks";
 import { ClientType } from "../../types/client";
 import { Loader } from "../../Components/Loader";
+import { getAllOrders } from "../../redux/orders/orders-operations";
+import { OrderType } from "../../types/orderType";
+import { useNavigate } from "react-router-dom";
+import IconPhone from "../../assets/images/phone.png";
 import {
   orderSelectorLoading,
   orderSelectorOrders,
 } from "../../redux/orders/orders-selectors";
-import { getAllOrders } from "../../redux/orders/orders-operations";
-import { OrderType } from "../../types/orderType";
-import { useNavigate } from "react-router-dom";
-import iconPhone from "../../assets/images/phone.png";
+import {
+  clientSelectorClients,
+  clientSelectorLoading,
+} from "../../redux/clients/client-selectors";
 
 const Office: React.FC = () => {
   const dispatch = useAppDispatch();
   const navigation = useNavigate();
-  const [activeTab, setActiveTab] = useState<"clients" | "orders">("clients");
+  const [activeTab, setActiveTab] = useState<"clients" | "orders" | "price">(
+    "clients",
+  );
   const selectorClients = useSelector(clientSelectorClients);
   const selectorOrders = useSelector(orderSelectorOrders);
   const isLoadingClients = useSelector(clientSelectorLoading);
@@ -58,6 +55,12 @@ const Office: React.FC = () => {
         >
           Заказы
         </STab>
+        <STab
+          $active={activeTab === "price"}
+          onClick={() => setActiveTab("price")}
+        >
+          ПрайсЛист
+        </STab>
       </STabs>
 
       <STabContent>
@@ -71,9 +74,14 @@ const Office: React.FC = () => {
                   key={client.id}
                   onClick={() => navigation(`/office/${client.id}`)}
                 >
-                  <SName>{client.name}</SName>
+                  <SText>{client.name}</SText>
                   <SWrapperInfo>
-                    <SIcon src={iconPhone} /> <SInfo>{client.phone}</SInfo>
+                    <ButtonIcon
+                      src={IconPhone}
+                      alt="phone"
+                      toolHint="Телефон клиента"
+                    />
+                    <SInfo>{client.phone}</SInfo>
                   </SWrapperInfo>
                 </SItem>
               ))}
@@ -88,15 +96,22 @@ const Office: React.FC = () => {
             <SList>
               {selectorOrders.map((order: OrderType) => (
                 <SItem key={order.id}>
-                  <SName>{order.name}</SName>
+                  <SText>{order.name}</SText>
                   <SWrapperInfo>
-                    <SIcon src={iconPhone} /> <SInfo>{order.phone}</SInfo>
+                    <ButtonIcon
+                      src={IconPhone}
+                      alt="phone"
+                      toolHint="Телефон клиента"
+                    />
+                    <SInfo>{order.phone}</SInfo>
                   </SWrapperInfo>
                 </SItem>
               ))}
             </SList>
           )
         )}
+
+        {activeTab === "price" && <Price />}
       </STabContent>
     </SOffice>
   );

@@ -1,8 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { OrderType } from "../../types/orderType";
 
 const initialOrderState = {
-  orders: [],
-  order: null,
+  orders: [] as OrderType[],
+  ordersClient: [] as OrderType[],
+  order: {} as OrderType,
   error: [],
   isLoading: false,
   message: "",
@@ -13,12 +15,17 @@ const { actions, reducer } = createSlice({
   initialState: initialOrderState,
   reducers: {
     createSuccess: (state, { payload }) => {
-      state.order = payload.order;
+      state.orders = [...state.orders, payload];
       state.isLoading = false;
     },
 
     getAllSuccess: (state, { payload }) => {
       state.orders = payload;
+      state.isLoading = false;
+    },
+
+    getAllByIdClientSuccess: (state, { payload }) => {
+      state.ordersClient = payload;
       state.isLoading = false;
     },
 
@@ -33,7 +40,11 @@ const { actions, reducer } = createSlice({
     },
 
     deleteOrderSuccess: (state, { payload }) => {
-      state.message = payload;
+      state.ordersClient = state.ordersClient.filter(
+        (order) => order.id !== payload.id,
+      );
+      state.orders = state.orders.filter((order) => order.id !== payload.id);
+      state.message = payload.message;
       state.isLoading = false;
     },
 

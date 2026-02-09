@@ -3,6 +3,7 @@ import { persistStore, persistReducer } from "redux-persist";
 import { reducer as reducerAuth } from "./auth/auth-reducer";
 import { reducer as reducerClient } from "./clients/client-reducer";
 import { reducer as reducerOrders } from "./orders/orders-reducer";
+import { reducer as reducerPrice } from "./price/price-reducer";
 import storage from "redux-persist/lib/storage";
 
 const authPersistConfig = {
@@ -16,6 +17,7 @@ const store = configureStore({
     auth: persistReducer(authPersistConfig, reducerAuth),
     client: reducerClient,
     order: reducerOrders,
+    price: reducerPrice,
   },
   devTools: process.env.NODE_ENV === "development",
 });
