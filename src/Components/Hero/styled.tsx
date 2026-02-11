@@ -13,6 +13,7 @@ export const SHero = styled.div.attrs({ className: "hero" })`
   @media ${device.mobile} {
     height: 400px;
     padding: 20px 0;
+    align-items: end;
   }
   @media ${device.tablet} {
     height: 500px;
@@ -27,22 +28,36 @@ export const SContainer = styled.div.attrs({ className: "hero__container" })`
   width: 50%;
   gap: 20px;
 
-  &:first-child {
-    padding-left: 50px;
+  &:nth-child(2) {
+    padding-right: 20px;
     align-items: start;
     justify-content: center;
 
     @media ${device.tablet} {
-      width: 80%;
+      width: 100%;
+      padding-left: 25px;
+    }
+
+    @media ${device.mobile} {
+      width: 100%;
+      padding-left: 25px;
     }
   }
 
-  &:nth-child(2) {
-    justify-content: end;
-    padding-bottom: 80px;
+  &:first-child {
+    justify-content: center;
+    padding-bottom: 100px;
 
     @media ${device.laptop} {
       padding-bottom: 40px;
+    }
+
+    @media ${device.tablet} {
+      display: none;
+    }
+
+    @media ${device.mobile} {
+      display: none;
     }
   }
 `;
@@ -54,9 +69,9 @@ export const SBoxTitle = styled.div.attrs({ className: "hero__boxTitle" })`
   border: 1px solid ${color.accent_2};
 
   /* Прозрачный матовый фон */
-  background-color: rgba(${color.textDarkGreen}, 0.8);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px); /* для Safari */
+  background-color: rgba(255, 107, 53, 0.2);
+  /* backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px); для Safari */
   border-radius: 22px;
 
   @media ${device.laptop} {
@@ -114,7 +129,6 @@ export const SItem = styled.li.attrs({ className: "hero__item" })`
   padding-left: 18px;
 
   @media ${device.mobile} {
-    flex-direction: column;
     align-items: flex-start;
     gap: 5px;
   }
@@ -154,7 +168,10 @@ export const SIcon = styled(IconQualityCheck).attrs({
 
 export const SText = styled.p.attrs({ className: "hero__text" })`
   ${fontMixin.standard}
-  color:${color.accent_2}
+  color:black;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 1.2px;
 `;
 
 export const SBoxForm = styled.div.attrs({ className: "hero__boxForm" })`
@@ -165,9 +182,9 @@ export const SBoxForm = styled.div.attrs({ className: "hero__boxForm" })`
   border-radius: 8px;
 
   /* Прозрачный матовый фон */
-  background-color: rgba(${color.textDarkGreen}, 0.8);
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px); /* для Safari */
+  -webkit-backdrop-filter: blur(50px);
+  /* background-color: rgba(255, 107, 53, 0.4); */
   border-radius: 22px;
 
   @media ${device.mobile} {

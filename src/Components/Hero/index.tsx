@@ -27,6 +27,12 @@ const Hero: React.FC = () => {
   return (
     <SHero>
       <SContainer>
+        <SBoxForm>
+          <STitleForm>Бесплатная консультация</STitleForm>
+          <FormContact />
+        </SBoxForm>
+      </SContainer>
+      <SContainer>
         <SBoxTitle>
           <div style={{ display: "flex" }}>
             <SIconQuality />
@@ -56,12 +62,6 @@ const Hero: React.FC = () => {
             ))}
           </SList>
         </SBoxTitle>
-      </SContainer>
-      <SContainer>
-        <SBoxForm>
-          <STitleForm>Бесплатная консультация</STitleForm>
-          <FormContact />
-        </SBoxForm>
       </SContainer>
     </SHero>
   );

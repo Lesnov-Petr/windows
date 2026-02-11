@@ -13,6 +13,10 @@ export const SContacts = styled.div.attrs({ className: "contacts" })`
   @media ${device.tablet} {
     display: none;
   }
+
+  @media ${device.laptop} {
+    gap: 5px;
+  }
 `;
 
 export const SBox = styled.div.attrs({ className: "contacts__box" })`
@@ -128,15 +132,13 @@ export const SPhone = styled.p.attrs({ className: "contacts__phone" })`
   font-weight: 600;
 
   @media ${device.mobile} {
-    text-align: center;
-    margin-bottom: 10px;
   }
 
   @media ${device.tablet} {
-    text-align: right;
   }
 
   @media ${device.laptop} {
+    font-size: 18px;
   }
 `;
 
@@ -151,5 +153,9 @@ export const SWorkTime = styled.p.attrs({ className: "contacts__workTime" })`
 
   @media ${device.tablet} {
     text-align: right;
+  }
+
+  @media ${device.laptop} {
+    font-size: 16px;
   }
 `;

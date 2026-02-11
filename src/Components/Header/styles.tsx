@@ -15,9 +15,9 @@ export const SHeader = styled.div.attrs({ className: "header" })`
   align-items: center;
 
   /* Прозрачный матовый фон */
-  background-color: rgba(${color.textDarkGreen}, 0.8);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px); /* для Safari */
+  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px); /* для Safari */
+  border: 1px solid ${color.accent_2};
   border-radius: 22px;
 
   @media ${device.mobile} {
@@ -30,7 +30,6 @@ export const SHeader = styled.div.attrs({ className: "header" })`
   }
 
   @media ${device.laptop} {
-    width: 95%;
     height: 100px;
   }
 `;

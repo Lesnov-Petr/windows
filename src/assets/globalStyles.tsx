@@ -11,8 +11,8 @@ const size = {
   mobileM: "375px", // iPhone 8, SE (2020)
   mobileL: "767px", // Большие смартфоны (iPhone 12/13/14 Pro Max)
   tabletS: "768px", // Планшеты в портретной ориентации (iPad, Android)
-  tabletL: "1024px", // Планшеты в альбомной ориентации
-  laptopS: "1024px", // Ноутбуки/нетбуки (11–13")
+  tabletL: "1124px", // Планшеты в альбомной ориентации
+  laptopS: "1125px", // Ноутбуки/нетбуки (11–13")
   laptopL: "1440px", // Ноутбуки (14–16")
   desktopS: "1680px", // Десктопы (21–24")
   desktopM: "1920px", // Full HD (24–27")
@@ -32,8 +32,8 @@ export const color = {
   textAccent: "#5c7560",
   textDarkGreen: "#085237",
   accent: "#e1eedc",
-  accent_2: "#1ad3d3",
-  accentOrange: "#ff6b35",
+  accent_2: "rgb(26, 211, 211)",
+  accentOrange: "rgb(255, 107, 53)",
   accentCoral: "#E63946",
   hoverAccent: "#a8c79a",
   mark: "#7f8c8d",
@@ -318,9 +318,9 @@ export const GlobalStyle = createGlobalStyle`
 		-moz-osx-font-smoothing: grayscale;
 		color: ${color.text};
 		letter-spacing: 0.1px;
-		/* overflow: hidden; */
 		transition: background-color 500ms ease-in-out;
 		background-color: ${color.bg};
+    overflow-x: hidden;
 	}
 
 	*,

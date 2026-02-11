@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 export const SBurgerMenu = styled.div.attrs({ className: "burgerMenu" })`
   display: none;
   position: relative;
-  z-index: 1;
+  z-index: 3;
 
   @media ${device.mobile} {
     display: block;
@@ -16,27 +16,41 @@ export const SBurgerMenu = styled.div.attrs({ className: "burgerMenu" })`
   }
 `;
 
-export const SMenuOverlay = styled.div`
+export const SMenuOverlay = styled.div.attrs({
+  className: "burgerMenu__overlay",
+})`
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: -15px;
+  left: -26px;
+  width: 100vw;
+  height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
 `;
 
-export const SMenuContent = styled.div<{ $isOpen: boolean }>`
+export const SMenuContent = styled.div.attrs({
+  className: "burgerMenu__content",
+})<{
+  $isOpen: boolean;
+}>`
   position: fixed;
   top: 0;
-  right: ${({ $isOpen }) => ($isOpen ? "0" : "-100%")};
-  width: 70%;
-  padding: 0 30px;
-  max-width: 400px;
-  height: 100vh;
+  right: 0;
+  width: 100%;
+  max-width: 340px;
+  padding: 30px;
+  box-sizing: border-box;
   background-color: ${color.bg};
   box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
   transition: right 0.3s ease-out;
   overflow-y: auto;
+  /* overflow-x: hidden; */
+  border-radius: 22px;
+
+  /* Полный выход из потока при закрытии */
+  display: ${({ $isOpen }) => ($isOpen ? "block" : "none")};
+
+  /* Убираем transform, так как display: none эффективнее */
+  transition: display 300s ease-out; /* Плавность не нужна для none */
 `;
 
 export const SList = styled.ul.attrs({ className: "burgerMenu__list" })`
@@ -89,7 +103,9 @@ export const SButtonClose = styled.button.attrs({
   }
 `;
 
-export const SBurgerIcon = styled.button`
+export const SBurgerIcon = styled.button.attrs({
+  className: "burgerMenu__icon",
+})`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -118,6 +134,6 @@ export const SAuthMenu = styled.div.attrs({
   className: "burgermenu__authMenu",
 })`
   position: absolute;
-  top: 40px;
-  right: 80px;
+  top: 80px;
+  right: 100px;
 `;

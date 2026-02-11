@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { color, device, fontMixin } from "../../assets/globalStyles";
 
 export const SDescription = styled.div.attrs({ className: "description" })`
-  width: 100%;
+  /* width: 100%; */
   background-color: white;
 `;
 
@@ -118,4 +118,223 @@ export const SOverlay = styled.div.attrs({ className: "description__overlay" })`
   );
   z-index: 2;
   pointer-events: none;
+`;
+
+export const SBoxReasons = styled.div.attrs({
+  className: "description__boxReasons",
+})`
+  display: flex;
+  padding-top: 60px;
+  min-height: 100vh;
+
+  @media ${device.laptop} {
+    padding-top: 50px;
+    min-height: auto;
+  }
+
+  @media ${device.tablet} {
+    padding-top: 40px;
+    flex-direction: column;
+  }
+
+  @media ${device.mobile} {
+    padding-top: 30px;
+    flex-direction: column;
+  }
+`;
+
+export const SSection = styled.div.attrs({
+  className: "description__sercion",
+})`
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+
+  &:first-child {
+    padding-right: 20px;
+    width: 45%;
+  }
+  &:last-child {
+    padding-left: 20px;
+    width: 55%;
+  }
+
+  @media ${device.laptop} {
+    &:first-child,
+    &:last-child {
+      width: 100%; /* Одна колонка на ноутбуках */
+      padding: 0 15px;
+    }
+  }
+
+  @media ${device.tablet} {
+    flex-direction: column;
+    align-items: center;
+
+    &:first-child,
+    &:last-child {
+      width: 100%;
+      padding: 10px 0;
+    }
+  }
+
+  @media ${device.mobile} {
+    flex-direction: column;
+    &:first-child,
+    &:last-child {
+      width: 100%;
+      padding: 8px 0;
+    }
+  }
+`;
+
+export const SListReasons = styled.ul.attrs({
+  className: "description__listReasons",
+})`
+  display: flex;
+  flex-direction: column;
+
+  gap: 20px;
+
+  @media ${device.laptop} {
+    gap: 18px;
+  }
+
+  @media ${device.tablet} {
+    gap: 16px;
+    padding: 0 10px;
+  }
+
+  @media ${device.mobile} {
+    gap: 14px;
+    padding: 0 8px;
+  }
+`;
+
+export const SItem = styled.li.attrs({ className: "description__item" })`
+  display: flex;
+  padding: 20px;
+  border-radius: 22px;
+  border: 1px solid ${color.accent_2};
+  gap: 15px;
+  background-color: rgba(26, 211, 211, 0.2);
+
+  @media ${device.laptop} {
+    padding: 18px;
+    gap: 13px;
+  }
+
+  @media ${device.tablet} {
+    padding: 16px;
+    gap: 12px;
+    border-radius: 18px;
+    width: 70vw;
+  }
+
+  @media ${device.mobile} {
+    padding: 14px;
+    gap: 10px;
+    border-radius: 14px;
+  }
+`;
+
+export const STitleReasons = styled.h3.attrs({
+  className: "description__titleReasons",
+})`
+  ${fontMixin.title}
+  position:sticky;
+  top: 0;
+  font-size: 46px;
+  font-weight: 700;
+  text-transform: uppercase;
+  align-self: flex-start;
+
+  @media ${device.laptop} {
+    font-size: 40px;
+  }
+
+  @media ${device.tablet} {
+    font-size: 27px;
+    padding: 0 10px;
+    margin: 0 auto;
+  }
+
+  @media ${device.mobile} {
+    font-size: 28px;
+    padding: 0 8px;
+    margin: 0 auto;
+  }
+`;
+
+export const SSubTitleReasons = styled.h3.attrs({
+  className: "description__titleReasons",
+})`
+  ${fontMixin.subTitle}
+  font-size:20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: ${color.textDarkGreen};
+
+  @media ${device.laptop} {
+    font-size: 18px;
+  }
+
+  @media ${device.tablet} {
+    font-size: 16px;
+    padding: 0 10px;
+  }
+
+  @media ${device.mobile} {
+    font-size: 14px;
+    padding: 0 8px;
+    /* text-align: center; */
+  }
+`;
+
+export const SKey = styled.h2.attrs({
+  className: "description__titleReasons",
+})`
+  ${fontMixin.title}
+  font-size:64px;
+
+  @media ${device.laptop} {
+    font-size: 56px;
+  }
+
+  @media ${device.tablet} {
+    font-size: 48px;
+    text-align: center;
+  }
+
+  @media ${device.mobile} {
+    font-size: 36px;
+    text-align: center;
+  }
+`;
+
+export const SItemReason = styled.li.attrs({
+  className: "description__itemReason",
+})`
+  ${fontMixin.standard}
+  font-size:20px;
+
+  display: flex;
+  padding-left: 20px;
+  color: ${color.textDarkGreen};
+
+  @media ${device.laptop} {
+    font-size: 18px;
+    padding-left: 18px;
+  }
+
+  @media ${device.tablet} {
+    font-size: 16px;
+    padding-left: 16px;
+  }
+
+  @media ${device.mobile} {
+    font-size: 14px;
+    padding-left: 12px;
+    padding-right: 12px; /* Чтобы текст не упирался в край */
+  }
 `;
