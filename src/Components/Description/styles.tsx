@@ -55,7 +55,7 @@ export const SLink = styled.a.attrs({ className: "description__link" })`
 
   /* Адаптация для мобильных (1 колонка) */
   @media ${device.mobile} {
-    flex: 1 1 100%;
+    flex: 1 1 calc(50% - 10px);
     min-width: 0;
     max-width: none;
     margin-bottom: 15px;
@@ -84,7 +84,7 @@ export const SLink = styled.a.attrs({ className: "description__link" })`
     display: flex;
     flex-direction: column;
     align-items: end;
-    padding: 16px; /* Уменьшили отступы для компактности на мобильных */
+    padding: 5px; /* Уменьшили отступы для компактности на мобильных */
 
     .icon {
       width: 36px;
@@ -93,14 +93,14 @@ export const SLink = styled.a.attrs({ className: "description__link" })`
       filter: brightness(2) invert(1);
     }
 
-    .span {
-      ${fontMixin.subTitle}
-      font-size: 18px; /* Уменьшили шрифт для планшетов/мобильных */
-    }
-
+    .span,
     .price {
+      ${fontMixin.subTitle}
       margin-left: auto;
-      font-size: 16px; /* Дополнительно уменьшили размер цены */
+
+      @media ${device.mobile} {
+        ${fontMixin.standard}
+      }
     }
   }
 `;
@@ -254,20 +254,20 @@ export const STitleReasons = styled.h3.attrs({
   }
 
   @media ${device.tablet} {
-    font-size: 27px;
+    font-size: 25px;
     padding: 0 10px;
     margin: 0 auto;
   }
 
   @media ${device.mobile} {
-    font-size: 28px;
+    font-size: 22px;
     padding: 0 8px;
     margin: 0 auto;
   }
 `;
 
 export const SSubTitleReasons = styled.h3.attrs({
-  className: "description__titleReasons",
+  className: "description__subTitleReasons",
 })`
   ${fontMixin.subTitle}
   font-size:20px;
@@ -287,7 +287,6 @@ export const SSubTitleReasons = styled.h3.attrs({
   @media ${device.mobile} {
     font-size: 14px;
     padding: 0 8px;
-    /* text-align: center; */
   }
 `;
 

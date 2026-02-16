@@ -3,11 +3,9 @@ import { color, device } from "../../assets/globalStyles";
 import { SToolHint } from "../ToolHint/styles";
 
 export const SHeader = styled.div.attrs({ className: "header" })`
-  position: absolute;
-  top: 8%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
   display: flex;
+  margin: auto auto;
   width: 85%;
   height: 110px;
   padding: 20px;
@@ -17,15 +15,13 @@ export const SHeader = styled.div.attrs({ className: "header" })`
   /* Прозрачный матовый фон */
   backdrop-filter: blur(50px);
   -webkit-backdrop-filter: blur(50px); /* для Safari */
-  border: 1px solid ${color.accent_2};
-  border-radius: 22px;
 
   @media ${device.mobile} {
     width: 100%;
     height: 80px;
   }
   @media ${device.tablet} {
-    width: 95%;
+    width: 100%;
     height: 90px;
   }
 

@@ -42,7 +42,6 @@ export const SWrapper = styled.div.attrs({
 `;
 
 export const SButton = styled.div.attrs({ className: "cardClient__button" })`
-  position: relative;
   margin-right: 5px;
   padding: 2px;
   transition: all ${ms} ${cubic};
@@ -142,12 +141,11 @@ export const SIcon = styled.img.attrs({
 `;
 
 export const SItem = styled.li.attrs({ className: "cardClient__item" })`
-  position: relative;
+  display: grid;
   background-color: ${color.bg};
   padding: 1.25rem;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-  display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 1rem;
   cursor: pointer;
@@ -163,12 +161,9 @@ export const SItem = styled.li.attrs({ className: "cardClient__item" })`
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
   }
 
-  /* Позиционирование SButton */
   ${SButton} {
-    position: absolute;
-    top: 1.25rem;
-    right: 1.25rem;
     padding: 5px;
+    justify-self: end;
 
     /* Стили для иконки внутри кнопки */
     ${SIcon} {
@@ -176,11 +171,6 @@ export const SItem = styled.li.attrs({ className: "cardClient__item" })`
       height: 20px;
       object-fit: contain;
       margin: 0;
-    }
-
-    @media (max-width: 600px) {
-      top: 1rem;
-      right: 1rem;
     }
   }
 `;

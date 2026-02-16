@@ -3,7 +3,6 @@ import { color, cubic, ms } from "../../assets/globalStyles";
 import { SToolHint } from "../ToolHint/styles";
 
 export const SButton = styled.button.attrs({ className: "button" })`
-  position: relative;
   margin-right: 10px;
   padding: 2px;
   border-radius: 8px;

@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 export const SBurgerMenu = styled.div.attrs({ className: "burgerMenu" })`
   display: none;
   position: relative;
-  z-index: 3;
+  z-index: 5;
 
   @media ${device.mobile} {
     display: block;

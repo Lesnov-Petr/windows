@@ -11,7 +11,7 @@ export const SHero = styled.div.attrs({ className: "hero" })`
   height: 100vh;
 
   @media ${device.mobile} {
-    height: 400px;
+    height: 350px;
     padding: 20px 0;
     align-items: end;
   }
@@ -34,11 +34,13 @@ export const SContainer = styled.div.attrs({ className: "hero__container" })`
     justify-content: center;
 
     @media ${device.tablet} {
+      gap: 15px;
       width: 100%;
       padding-left: 25px;
     }
 
     @media ${device.mobile} {
+      gap: 10px;
       width: 100%;
       padding-left: 25px;
     }
@@ -69,7 +71,7 @@ export const SBoxTitle = styled.div.attrs({ className: "hero__boxTitle" })`
   border: 1px solid ${color.accent_2};
 
   /* Прозрачный матовый фон */
-  background-color: rgba(255, 107, 53, 0.2);
+  background-color: rgba(255, 107, 53, 0.6);
   /* backdrop-filter: blur(50px);
   -webkit-backdrop-filter: blur(50px); для Safari */
   border-radius: 22px;
@@ -81,13 +83,17 @@ export const SBoxTitle = styled.div.attrs({ className: "hero__boxTitle" })`
   @media ${device.tablet} {
     padding: 5px;
   }
+
+  @media ${device.mobile} {
+    padding: 5px;
+  }
 `;
 
 export const STitle = styled.h1.attrs({ className: "hero__title" })`
   ${fontMixin.title}
   font-size: 60px;
   font-weight: 600;
-  color: ${color.textDarkGreen};
+  color: black;
 
   @media ${device.mobile} {
     font-size: 24px;

@@ -31,7 +31,7 @@ export const SModalOverlay = styled.div.attrs({
   align-items: center;
   animation: ${fadeIn} 0.3s ease-out;
   backdrop-filter: blur(4px);
-  z-index: 3;
+  z-index: 4;
 `;
 
 export const SModal = styled.div.attrs({

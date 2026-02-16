@@ -1,15 +1,19 @@
 // styles.ts
 import styled from "styled-components";
-import { cubic, ms, color } from "../../assets/globalStyles";
+import { cubic, ms, color, device } from "../../assets/globalStyles";
 
 export const SOffice = styled.div.attrs({ className: "office" })`
   font-family: Arial, sans-serif;
   max-width: 1000px;
   margin: 0 auto;
   padding: 20px;
+
+  @media ${device.mobile} {
+    padding-top: 100px;
+  }
 `;
 
-export const STabs = styled.div`
+export const STabs = styled.div.attrs({ className: "office__tabs" })`
   display: flex;
   border-bottom: 1px solid #ddd;
   margin-bottom: 20px;
@@ -30,6 +34,10 @@ export const STab = styled.button.attrs({ className: "office__tab" })<{
 
   &:hover {
     background: ${(props) => (props.$active ? color.accent_2 : color.accent)};
+  }
+
+  @media ${device.mobile} {
+    padding: 6px 12px;
   }
 `;
 
