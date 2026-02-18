@@ -1,6 +1,5 @@
 import { createGlobalStyle, css } from "styled-components";
 import "./fonts.css";
-import { title } from "process";
 
 export const cubic = "cubic-bezier(0.4, 0, 0.2, 1);";
 export const ms = "300ms";
