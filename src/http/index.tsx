@@ -1,6 +1,5 @@
 import axios from "axios";
-
-export const API_URL = "https://api.оконный-континент.рф/";
+export const API_URL = "https://api.мастерская-окон.рф/";
 
 const $api = axios.create({
   withCredentials: true,

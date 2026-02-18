@@ -1,6 +1,6 @@
 {
-  "homepage": ".",
-  "name": "оконный-континент",
+  "homepage": "https://мастерская-окон.рф",
+  "name": "windows",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
