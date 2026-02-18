@@ -21,11 +21,13 @@ import { getPriceList } from "../../redux/price/price-operations";
 import { priceSelectorPrices } from "../../redux/price/price-selectors";
 import Modal from "../Modal";
 import FormContact from "../Form";
+import { Loader } from "../Loader";
 
 export const Description: React.FC = () => {
   const dispatch = useAppDispatch();
   const selectorPrices = useSelector(priceSelectorPrices);
   const [isOpenModal, setIsOpenModal] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const listForPublic = selectorPrices.filter((price) => price.image);
   const listReasons = [
@@ -87,10 +89,13 @@ export const Description: React.FC = () => {
           {listForPublic.length > 0 &&
             listForPublic.map((item) => (
               <SLink onClick={handleClick}>
+                {isLoading && <Loader />}
                 <img
                   src={`https://api.мастерская-окон.рф${item.image}`}
                   alt={item.name}
+                  onLoad={() => setIsLoading(false)}
                 />
+
                 <SOverlay />
                 <div className="wrapper">
                   <div className="icon-wrapper">
