@@ -1,18 +1,18 @@
-import axios from "axios";
 import { CredentialsType } from "../types/credentials";
+import $api from "../http";
 
 const apiAuth = {
   signUpQuery(user: CredentialsType) {
-    return axios.post("/auth/signUp", user);
+    return $api.post("/auth/signUp", user);
   },
   signInQuery(credentials: CredentialsType) {
-    return axios.post("/auth/login", credentials);
+    return $api.post("/auth/login", credentials);
   },
   logOutQuery() {
-    return axios.post("/authUser/logout");
+    return $api.post("/authUser/logout");
   },
   getCurrentUserQuery() {
-    return axios.get("/authUser/current");
+    return $api.get("/authUser/current");
   },
 };
 

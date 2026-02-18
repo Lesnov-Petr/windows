@@ -1,39 +1,38 @@
-// api/clients.ts
-import axios from "axios";
 import { PriceType } from "../types/price";
+import $api from "../http";
 
 const apiPrice = {
   /*Создание price*/
   createQuery(data: PriceType) {
-    return axios.post("/price", data, {
+    return $api.post("/price", data, {
       headers: {
-        "Content-Type": "multipart/form-data", // Axios сам добавит boundary
+        "Content-Type": "multipart/form-data", // $api сам добавит boundary
       },
     });
   },
 
   /*Получение prices*/
   findAllQuery() {
-    return axios.get("/price");
+    return $api.get("/price");
   },
 
   /*Получение конкретного price по ID*/
   findOneQuery(id: string) {
-    return axios.get(`/price/${id}`);
+    return $api.get(`/price/${id}`);
   },
 
   /*Обновление price по ID*/
   updateQuery(id: PriceType["id"], data: PriceType) {
-    return axios.patch(`/price/${id}`, data, {
+    return $api.patch(`/price/${id}`, data, {
       headers: {
-        "Content-Type": "multipart/form-data", // Axios сам добавит boundary
+        "Content-Type": "multipart/form-data", // $api сам добавит boundary
       },
     });
   },
 
   /*Удаление price по ID*/
   deleteQuery(id: string) {
-    return axios.delete(`/price/${id}`);
+    return $api.delete(`/price/${id}`);
   },
 };
 

@@ -88,7 +88,7 @@ export const Description: React.FC = () => {
             listForPublic.map((item) => (
               <SLink onClick={handleClick}>
                 <img
-                  src={`https://api.оконный-континент.рф${item.image}`}
+                  src={`https://api.мастерская-окон.рф${item.image}`}
                   alt={item.name}
                 />
                 <SOverlay />
