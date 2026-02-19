@@ -82,6 +82,10 @@ export const SBoxTitle = styled.div.attrs({ className: "hero__boxTitle" })`
   /* backdrop-filter: blur(50px);
   -webkit-backdrop-filter: blur(50px); для Safari */
   border-radius: 1.25em;
+
+  @media ${device.mobile} {
+    padding: 0.5rem;
+  }
 `;
 
 export const STitle = styled.h1.attrs({ className: "hero__title" })`

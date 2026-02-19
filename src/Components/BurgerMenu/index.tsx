@@ -20,7 +20,7 @@ export const BurgerMenu: React.FC<BurgerMenuProps> = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
   const listNenu = [
     { link: "#services", label: "Услуги" },
-    { link: "#fotter", label: "Контакты" },
+    { link: "#footer", label: "Контакты" },
   ];
 
   // Закрытие меню при клике вне его области
