@@ -1,4 +1,7 @@
+import { useState } from "react";
+import { Button } from "../Button";
 import FormContact from "../Form";
+import Modal from "../Modal";
 
 import {
   SHero,
@@ -15,6 +18,7 @@ import {
 } from "./styled";
 
 const Hero: React.FC = () => {
+  const [isOpenModal, setIsOpenModal] = useState(false);
   const listRepait = [
     { name: "Диагностика и профилактика" },
     { name: "Регулировка и Герметичность" },
@@ -24,14 +28,12 @@ const Hero: React.FC = () => {
     { name: "Производство и установка окон по индивидуальным заказам" },
     { name: "Гарантийное обслуживание на весь срок службы окон" },
   ];
+
+  const handleClick = () => {
+    setIsOpenModal(!isOpenModal);
+  };
   return (
     <SHero>
-      <SContainer>
-        <SBoxForm>
-          <STitleForm>Бесплатная консультация</STitleForm>
-          <FormContact />
-        </SBoxForm>
-      </SContainer>
       <SContainer>
         <SBoxTitle>
           <div style={{ display: "flex" }}>
@@ -62,7 +64,23 @@ const Hero: React.FC = () => {
             ))}
           </SList>
         </SBoxTitle>
+        <Button type="button" onClick={handleClick}>
+          Заказать замер
+        </Button>
       </SContainer>
+      <SContainer>
+        <SBoxForm>
+          <STitleForm>Бесплатная консультация</STitleForm>
+          <FormContact />
+        </SBoxForm>
+      </SContainer>
+      <Modal
+        isOpen={isOpenModal}
+        onClose={() => setIsOpenModal(false)}
+        title={"Заказать замер"}
+      >
+        <FormContact onClick={handleClick} />
+      </Modal>
     </SHero>
   );
 };

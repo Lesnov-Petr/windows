@@ -22,6 +22,7 @@ import { priceSelectorPrices } from "../../redux/price/price-selectors";
 import Modal from "../Modal";
 import FormContact from "../Form";
 import { Loader } from "../Loader";
+import { ReactComponent as CheckIcon } from "../../assets/images/check.svg";
 
 export const Description: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -83,7 +84,7 @@ export const Description: React.FC = () => {
 
   return (
     <SDescription>
-      <SBox>
+      <SBox id="services">
         <STitle>Виды услуг по ремонту окон</STitle>
         <SList>
           {listForPublic.length > 0 &&
@@ -115,10 +116,27 @@ export const Description: React.FC = () => {
               {listReasons.map((reason) => (
                 <SItem key={reason.key}>
                   <SKey>{reason.key}</SKey>
-                  <div style={{ display: "flex", flexDirection: "column" }}>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "0.5rem",
+                    }}
+                  >
                     <SSubTitleReasons>{reason.title}</SSubTitleReasons>
                     {reason.listDetails.map((item) => (
-                      <SItemReason>{item}</SItemReason>
+                      <SItemReason>
+                        <div
+                          style={{
+                            width: "1.25rem",
+                            height: "1.25rem",
+                            flexShrink: 0,
+                          }}
+                        >
+                          <CheckIcon />
+                        </div>
+                        <p>{item}</p>
+                      </SItemReason>
                     ))}
                   </div>
                 </SItem>

@@ -59,7 +59,7 @@ export const SList = styled.ul.attrs({ className: "burgerMenu__list" })`
   padding: 60px 0px;
 `;
 
-export const SLink = styled(NavLink).attrs({ className: "burgerMenu__link" })`
+export const SLink = styled.a.attrs({ className: "burgerMenu__link" })`
   ${fontMixin.standard}
   margin-bottom: 20px;
   color: ${color.text};

@@ -8,7 +8,7 @@ interface ErrorProps {
 export const SForm = styled.form.attrs({ className: "header__form" })`
   width: 100%;
   text-align: center;
-  padding: 0 30px;
+  /* padding: 0 30px; */
 
   @media ${device.mobile} {
     padding: 0 15px;
@@ -48,6 +48,8 @@ export const SCheckboxContainer = styled.div.attrs({
     $error ? `1px solid ${color.accentCoral}` : "none"};
   background: ${({ $error }) => ($error ? "#fff5f5" : "transparent")};
   transition: all 0.3s ease;
+  background-color: rgba(26, 211, 211, 0.5);
+  padding: 5px;
 
   @media ${device.mobile} {
     flex-direction: column;
@@ -96,7 +98,7 @@ export const SCheckboxLabel = styled.label`
   text-align: start;
 
   a {
-    color: ${color.accent_2};
+    color: ${color.accentCoral};
     text-decoration: underline;
 
     &:hover {

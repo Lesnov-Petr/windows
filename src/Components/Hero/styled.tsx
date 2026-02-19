@@ -3,21 +3,23 @@ import heroImg from "../../assets/images/heroImg2.jpeg";
 import { color, fontMixin, device } from "../../assets/globalStyles";
 import { ReactComponent as IconQuality } from "../../assets/images/iconQuality.svg";
 import { ReactComponent as IconQualityCheck } from "../../assets/images/iconQualityCheck.svg";
+import { SButton } from "../Button/styles";
 
 export const SHero = styled.div.attrs({ className: "hero" })`
   display: flex;
   background: url(${heroImg}) center/100% auto no-repeat;
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 110px);
 
   @media ${device.mobile} {
-    height: 350px;
-    padding: 20px 0;
-    align-items: end;
+    height: auto;
   }
   @media ${device.tablet} {
-    height: 500px;
-    padding: 30px 0;
+    height: calc(100vh - 90px);
+  }
+
+  @media ${device.laptop} {
+    height: calc(100vh - 100px);
   }
 `;
 
@@ -28,31 +30,36 @@ export const SContainer = styled.div.attrs({ className: "hero__container" })`
   width: 50%;
   gap: 20px;
 
-  &:nth-child(2) {
-    padding-right: 20px;
+  &:first-child {
     align-items: start;
-    justify-content: center;
+    justify-content: top;
+    padding-top: 70px;
+    padding-left: 70px;
+    & ${SButton} {
+      display: none;
+    }
 
     @media ${device.tablet} {
-      gap: 15px;
+      gap: 1rem;
       width: 100%;
-      padding-left: 25px;
+
+      & ${SButton} {
+        display: block;
+      }
     }
 
     @media ${device.mobile} {
-      gap: 10px;
       width: 100%;
-      padding-left: 25px;
+      padding: 1rem;
+      & ${SButton} {
+        display: block;
+      }
     }
   }
 
-  &:first-child {
+  &:nth-child(2) {
+    padding-right: 1.25rem;
     justify-content: center;
-    padding-bottom: 100px;
-
-    @media ${device.laptop} {
-      padding-bottom: 40px;
-    }
 
     @media ${device.tablet} {
       display: none;
@@ -67,63 +74,21 @@ export const SContainer = styled.div.attrs({ className: "hero__container" })`
 export const SBoxTitle = styled.div.attrs({ className: "hero__boxTitle" })`
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: 1rem;
   border: 1px solid ${color.accent_2};
 
   /* Прозрачный матовый фон */
-  background-color: rgba(255, 107, 53, 0.6);
+  background-color: rgba(182, 188, 207, 0.6);
   /* backdrop-filter: blur(50px);
   -webkit-backdrop-filter: blur(50px); для Safari */
-  border-radius: 22px;
-
-  @media ${device.laptop} {
-    padding: 10px;
-  }
-
-  @media ${device.tablet} {
-    padding: 5px;
-  }
-
-  @media ${device.mobile} {
-    padding: 5px;
-  }
+  border-radius: 1.25em;
 `;
 
 export const STitle = styled.h1.attrs({ className: "hero__title" })`
   ${fontMixin.title}
-  font-size: 60px;
-  font-weight: 600;
+  font-weight: 700;
   color: black;
-
-  @media ${device.mobile} {
-    font-size: 24px;
-    text-align: center;
-  }
-  @media ${device.tablet} {
-    font-size: 36px;
-    text-align: left;
-  }
-
-  @media ${device.laptop} {
-    font-size: 40px;
-    text-align: left;
-  }
-`;
-
-export const SSubTitle = styled.h2.attrs({ className: "hero__subTitle" })`
-  ${fontMixin.subTitle}
-  font-size: 48px;
-  color: ${color.textDarkGreen};
-  border-bottom: 3px solid black;
-  font-weight: 500;
-
-  @media ${device.mobile} {
-    text-align: center;
-    border-bottom: 2px solid black;
-  }
-  @media ${device.tablet} {
-    text-align: left;
-  }
+  text-align: left;
 `;
 
 export const SList = styled.ul.attrs({ className: "hero__list" })``;
@@ -131,44 +96,46 @@ export const SList = styled.ul.attrs({ className: "hero__list" })``;
 export const SItem = styled.li.attrs({ className: "hero__item" })`
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding-left: 18px;
+  gap: 0.5rem;
+  padding-left: 1rem;
 
   @media ${device.mobile} {
     align-items: flex-start;
-    gap: 5px;
+    gap: 0.5rem;
   }
 `;
 
 export const SIconQuality = styled(IconQuality).attrs({
   className: "hero__icon",
 })`
-  width: 60px;
-  margin-right: 20px;
+  width: 4rem;
+  margin-right: 1rem;
+  flex-shrink: 0;
 
-  fill: ${color.white};
+  fill: ${color.bg};
 
   @media ${device.mobile} {
-    width: 40px;
+    width: 3rem;
   }
   @media ${device.tablet} {
-    width: 55px;
+    width: 3.5rem;
   }
 `;
 
 export const SIcon = styled(IconQualityCheck).attrs({
   className: "hero__icon",
 })`
-  width: 25px;
-  margin-right: 20px;
+  width: 1.5rem;
+  margin-right: 0.3rem;
+  flex-shrink: 0;
 
   fill: ${color.accent_2};
 
   @media ${device.mobile} {
-    width: 18px;
+    width: 1rem;
   }
   @media ${device.tablet} {
-    width: 20px;
+    width: 1.25rem;
   }
 `;
 
@@ -176,14 +143,13 @@ export const SText = styled.p.attrs({ className: "hero__text" })`
   ${fontMixin.standard}
   color:black;
   font-weight: 700;
-  font-size: 20px;
-  letter-spacing: 1.2px;
+  letter-spacing: 0.8px;
 `;
 
 export const SBoxForm = styled.div.attrs({ className: "hero__boxForm" })`
-  width: 50%;
+  width: 60%;
 
-  padding: 20px;
+  padding: 1.75rem;
   border: 1px solid ${color.accent_2};
   border-radius: 8px;
 
@@ -206,14 +172,9 @@ export const SBoxForm = styled.div.attrs({ className: "hero__boxForm" })`
 
 export const STitleForm = styled.h2.attrs({ className: "hero__subTitle" })`
   ${fontMixin.subTitle}
-  margin-bottom: 20px;
-  font-size: 24px;
+  margin-bottom: 1.25rem;
   text-align: center;
-
-  @media ${device.mobile} {
-    margin-bottom: 15px;
-  }
-  @media ${device.tablet} {
-    margin-bottom: 18px;
-  }
+  font-weight: 600;
+  background-color: rgba(26, 211, 211, 0.5);
+  border-radius: 8px;
 `;

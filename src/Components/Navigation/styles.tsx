@@ -24,13 +24,13 @@ export const SList = styled.ul.attrs({ className: "header__list" })`
   gap: 5px;
 `;
 
-export const SLink = styled(NavLink).attrs({ className: "header__link" })`
+export const SLink = styled.a.attrs({ className: "header__link" })`
   ${fontMixin.standard}
   font-size: 24px;
   height: auto;
   padding: 10px 15px;
   border-radius: 4px;
-  transition: all 0.3s ease;
+  transition: all 0.1s ease;
   text-decoration: none;
   color: ${color.text};
 
@@ -42,8 +42,8 @@ export const SLink = styled(NavLink).attrs({ className: "header__link" })`
   }
 
   &:hover {
-    background-color: ${color.accent};
     color: ${color.textAccent};
+    outline: 2px solid ${color.accent_2};
   }
 
   &:last-child {

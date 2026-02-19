@@ -4,18 +4,10 @@ import { device } from "../../assets/globalStyles"; // путь к вашему 
 
 export const SContacts = styled.div.attrs({ className: "contacts" })`
   display: flex;
-  gap: 20px;
+  gap: 1.5rem;
 
   @media ${device.mobile} {
-    display: none;
-  }
-
-  @media ${device.tablet} {
-    display: none;
-  }
-
-  @media ${device.laptop} {
-    gap: 5px;
+    gap: 0.8rem;
   }
 `;
 
@@ -24,27 +16,15 @@ export const SBox = styled.div.attrs({ className: "contacts__box" })`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 10px;
-
-  @media ${device.mobile} {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  @media ${device.tablet} {
-    flex-direction: row;
-    justify-content: flex-end;
-  }
+  gap: 0.5rem;
 `;
 
 export const STitle = styled.p.attrs({ className: "contacts__title" })`
   ${fontMixin.title};
-  font-size: 20px;
-  display: inherit;
   width: 100%;
   align-items: center;
   color: ${color.textDarkGreen};
-  font-weight: 600;
+  font-weight: 700;
 
   @media ${device.mobile} {
     text-align: center;
@@ -57,42 +37,33 @@ export const STitle = styled.p.attrs({ className: "contacts__title" })`
 
 export const SList = styled.ul.attrs({ className: "contacts__list" })`
   display: inherit;
-  flex-direction: column;
   list-style: none;
   padding: 0;
   margin: 0;
-  gap: 5px;
-
-  @media ${device.mobile} {
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    padding: 10px 0;
-  }
+  gap: 0.2rem;
 
   @media ${device.tablet} {
     flex-direction: row;
     align-items: center;
   }
+
+  @media ${device.mobile} {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 0.2rem 0;
+  }
 `;
 
 export const SItem = styled.li.attrs({ className: "social__item" })`
   display: flex;
-
-  @media ${device.mobile} {
-    justify-content: center;
-    width: 100%;
-  }
-
-  @media ${device.tablet} {
-    justify-content: flex-start;
-  }
+  width: 100%;
 `;
 
 export const SLink = styled.a.attrs({ className: "social__link" })`
   display: flex;
-  width: 24px;
-  height: 24px;
+  width: 1.5rem;
+  height: 1.5rem;
   padding: 2px;
   border-radius: 50%;
   transition: border 250ms ${cubic};
@@ -100,30 +71,12 @@ export const SLink = styled.a.attrs({ className: "social__link" })`
   &:hover {
     transform: scale(1.1);
   }
-
-  @media ${device.mobile} {
-    width: 30px;
-    height: 30px;
-    padding: 3px;
-  }
-
-  @media ${device.tablet} {
-    width: 26px;
-    height: 26px;
-    padding: 2.5px;
-  }
 `;
 
 export const SBoxPhone = styled.div.attrs({ className: "contacts__boxPhone" })`
   display: flex;
   width: 100%;
   gap: 10px;
-
-  @media ${device.mobile} {
-  }
-
-  @media ${device.tablet} {
-  }
 `;
 
 export const SPhone = styled.p.attrs({ className: "contacts__phone" })`
@@ -131,14 +84,8 @@ export const SPhone = styled.p.attrs({ className: "contacts__phone" })`
   color: ${color.textDarkGreen};
   font-weight: 600;
 
-  @media ${device.mobile} {
-  }
-
-  @media ${device.tablet} {
-  }
-
-  @media ${device.laptop} {
-    font-size: 18px;
+  @media (width < 36rem) {
+    font-size: 0.8rem;
   }
 `;
 
@@ -146,16 +93,11 @@ export const SWorkTime = styled.p.attrs({ className: "contacts__workTime" })`
   ${fontMixin.standard};
   color: ${color.accent_2};
 
-  @media ${device.mobile} {
-    text-align: center;
-    margin-top: 5px;
+  @media (width < 36rem) {
+    font-size: 0.8rem;
   }
 
   @media ${device.tablet} {
     text-align: right;
-  }
-
-  @media ${device.laptop} {
-    font-size: 16px;
   }
 `;

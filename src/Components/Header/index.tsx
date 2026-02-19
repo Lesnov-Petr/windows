@@ -52,7 +52,7 @@ export const Header: React.FC<{}> = () => {
 
   return (
     <>
-      <SHeader>
+      <SHeader id="header">
         <LogoFirst />
         <Navigation />
         <Button type="button" onClick={handleClick}>

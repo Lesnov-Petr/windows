@@ -19,9 +19,8 @@ interface BurgerMenuProps {
 export const BurgerMenu: React.FC<BurgerMenuProps> = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
   const listNenu = [
-    { link: "/about", label: "О компании" },
-    { link: "/uslugi", label: "Услуги" },
-    { link: "/clients", label: "Клиентам" },
+    { link: "#services", label: "Услуги" },
+    { link: "fotter", label: "Контакты" },
   ];
 
   // Закрытие меню при клике вне его области
@@ -68,7 +67,7 @@ export const BurgerMenu: React.FC<BurgerMenuProps> = ({ children }) => {
           <nav>
             <SList>
               {listNenu.map((item) => (
-                <SLink to={item.link} onClick={() => setIsOpen(false)}>
+                <SLink href={item.link} onClick={() => setIsOpen(false)}>
                   {item.label}
                 </SLink>
               ))}

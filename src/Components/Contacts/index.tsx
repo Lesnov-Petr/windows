@@ -46,7 +46,7 @@ export const Contacts: React.FC = () => {
       <SBox>
         <SBoxPhone>
           <Phone style={{ width: "24px" }} />
-          <SPhone>8 968 488 85 86</SPhone>
+          <SPhone>8 (968) 488-85-86</SPhone>
         </SBoxPhone>
         <SWorkTime>Ежедневно с 09:00 до 21:00</SWorkTime>
       </SBox>

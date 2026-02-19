@@ -6,16 +6,14 @@ export const ms = "300ms";
 
 //======================== Размеры девайса ===============================
 const size = {
-  mobileS: "320px", // Очень маленькие смартфоны (до 320px)
-  mobileM: "375px", // iPhone 8, SE (2020)
-  mobileL: "767px", // Большие смартфоны (iPhone 12/13/14 Pro Max)
-  tabletS: "768px", // Планшеты в портретной ориентации (iPad, Android)
-  tabletL: "1124px", // Планшеты в альбомной ориентации
-  laptopS: "1125px", // Ноутбуки/нетбуки (11–13")
-  laptopL: "1440px", // Ноутбуки (14–16")
-  desktopS: "1680px", // Десктопы (21–24")
-  desktopM: "1920px", // Full HD (24–27")
-  desktopL: "2560px", // 2K/4K мониторы
+  mobileS: "20rem", // Очень маленькие смартфоны (до 320px)
+  mobileL: "48rem", // Большие смартфоны (iPhone 12/13/14 Pro Max)
+  tabletS: "48rem", // Планшеты в портретной ориентации (iPad, Android)
+  tabletL: "64rem", // Планшеты в альбомной ориентации
+  laptopS: "64rem", // Ноутбуки/нетбуки (11–13")
+  laptopL: "90rem", // Ноутбуки (14–16")
+  desktopS: "90rem", // Десктопы (21–24")
+  desktopL: "160rem", // 2K/4K мониторы
 };
 
 export const device = {
@@ -30,51 +28,51 @@ export const color = {
   text: "#413b32",
   textAccent: "#5c7560",
   textDarkGreen: "#085237",
-  accent: "#e1eedc",
+  accent: "rgb(225, 238, 220)",
   accent_2: "rgb(26, 211, 211)",
   accentOrange: "rgb(255, 107, 53)",
   accentCoral: "#E63946",
   hoverAccent: "#a8c79a",
   mark: "#7f8c8d",
   logo: "#073826",
-  bg: "#fcf4e6",
+  bg: "#fff",
   bgCards: "#e1eedc",
   disable: "#faf8ea",
   lightAccent: "#6BA1FF",
-  white: "#f8f1f1",
+  modal: "rgba(225, 238, 220, 0.8)",
 };
 
 //======================== Шрифты ========================================
 const fontsFamaly = {
   logo: "Amaranth",
-  standard: "Poppins",
-  title: "Luckiest Guy",
+  standard: "Montserrat",
+  title: "Montserrat",
 };
 
 const sizeFonts = {
   mobile: {
-    standard: "14px", // Базовый текст (читаемость на малых экранах)
-    title: "24px", // Заголовки H1–H2
-    subTitle: "18px", // Подзаголовки H3–H4
-    logo: "32px", // Логотип/брендовый элемент
+    standard: "1rem", // 16px
+    subTitle: "1.25rem", // 20px
+    title: "1.75rem", // 28px
+    logo: "2.5rem", // 40px
   },
   tablet: {
-    standard: "16px", // Комфортное чтение на планшетах
-    title: "28px", // Увеличенные заголовки
-    subTitle: "20px", // Подзаголовки с запасом читаемости
-    logo: "48px", // Визуально заметный логотип
+    standard: "1rem", // 16px
+    subTitle: "1.5rem", // 24px
+    title: "2rem", // 32px
+    logo: "3rem", // 48px
   },
   laptop: {
-    standard: "16px", // Стандартный размер для ноутбуков
-    title: "32px", // Выразительные заголовки
-    subTitle: "22px", // Подзаголовки с иерархией
-    logo: "56px", // Акцентный логотип
+    standard: "1.125rem", // 18px
+    subTitle: "1.625rem", // 26px
+    title: "2.25rem", // 36px
+    logo: "3.5rem", // 56px
   },
   desktop: {
-    standard: "18px", // Улучшенная читаемость на больших экранах
-    title: "36px", // Крупные заголовки для десктопов
-    subTitle: "24px", // Подзаголовки с визуальным весом
-    logo: "64px", // Монументальный логотип
+    standard: "1.125rem", // 18px
+    subTitle: "1.625rem", // 26px
+    title: "2.25rem", // 36px
+    logo: "3.5rem", // 56px
   },
 };
 
@@ -139,7 +137,8 @@ export const fontMixin = {
     font-family: ${fontsFamaly.standard};
     font-size: ${sizeFonts.desktop.subTitle};
     font-weight: 400;
-    letter-spacing: 2px;
+    line-height: 1.21;
+    letter-spacing: 1.5px;
 
     @media ${device.tablet} {
       font-size: ${sizeFonts.tablet.subTitle};
@@ -160,7 +159,7 @@ export const btnMixin = {
   accent: css`
     ${fontMixin.standard} /* Используем готовый шрифт из fontMixin */
     color: ${color.text};
-    background-color: ${color.accent};
+    background-color: ${color.accent_2};
     padding: 15px 15px;
     border: 2px solid transparent;
     box-shadow: 0px 4px 10px ${color.accent};
@@ -307,6 +306,10 @@ export const textareaMixin = {
 
 //======================== Глобальные стили ===============================
 export const GlobalStyle = createGlobalStyle`
+
+  html {
+    scroll-behavior: smooth;
+  }
 	body {
 		scroll-behavior: smooth;
 		text-rendering: optimizeSpeed;

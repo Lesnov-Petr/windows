@@ -38,7 +38,7 @@ export const SModal = styled.div.attrs({
   className: "modal",
 })`
   position: relative;
-  background: ${color.bg};
+  background: ${color.modal};
   border-radius: 16px;
   padding: 32px;
   width: 100%;

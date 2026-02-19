@@ -4,9 +4,8 @@ export const Navigation: React.FC = () => {
   return (
     <SNavigation>
       <SList>
-        <SLink to="/about">О компании </SLink>
-        <SLink to="/uslugi">Услуги</SLink>
-        <SLink to="/clients">Клиентам</SLink>
+        <SLink href="#services">Услуги </SLink>
+        <SLink href="#footer">Контакты </SLink>
       </SList>
     </SNavigation>
   );

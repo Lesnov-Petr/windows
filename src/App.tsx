@@ -39,9 +39,7 @@ function App() {
             )}
           </Routes>
         </Suspense>
-        {/* <Container>
-          <Footer />
-        </Container> */}
+        <Footer />
       </div>
     </>
   );

@@ -1,16 +1,18 @@
 import { styled } from "styled-components";
-import { color, device } from "../../assets/globalStyles";
+import { device } from "../../assets/globalStyles";
 import { SToolHint } from "../ToolHint/styles";
+import { SButton } from "../Button/styles";
 
 export const SHeader = styled.div.attrs({ className: "header" })`
   position: relative;
   display: flex;
   margin: auto auto;
-  width: 85%;
+  width: 70%;
   height: 110px;
   padding: 20px;
   justify-content: space-between;
   align-items: center;
+  border-radius: 18px;
 
   /* Прозрачный матовый фон */
   backdrop-filter: blur(50px);
@@ -19,14 +21,24 @@ export const SHeader = styled.div.attrs({ className: "header" })`
   @media ${device.mobile} {
     width: 100%;
     height: 80px;
+    align-items: center;
+
+    & ${SButton} {
+      display: none;
+    }
   }
   @media ${device.tablet} {
     width: 100%;
     height: 90px;
+
+    & ${SButton} {
+      display: none;
+    }
   }
 
   @media ${device.laptop} {
     height: 100px;
+    width: 85%;
   }
 `;
 
